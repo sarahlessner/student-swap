@@ -29,14 +29,19 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//new controller for that serves the landing page
+var routes = require('./controllers/landing_controller.js');
+app.use("/", routes);
 
-// var routes = require('./controllers/burgers_controller.js');
-// app.use("/", routes);
-
-// Syncing our sequelize models and then starting our Express app
+// Syncing our sequeliz e models and then starting our Express app
 //{ force: true }
-db.sequelize.sync({ force: true }).then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
+// db.sequelize.sync({ force: true }).then(function() {
+//   app.listen(PORT, function() {
+//     console.log("App listening on PORT " + PORT);
+//   });
+// });
+
+// NOTE: this is a temporary setting just to test the view
+app.listen(PORT, function() {
+  console.log("App listening on PORT " + PORT);
 });
