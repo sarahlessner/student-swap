@@ -1,5 +1,5 @@
 {
-  "name": "burger",
+  "name": "student-swap",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,21 +9,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sarahlessner/burger.git"
+    "url": "git+https://github.com/sarahlessner/student-swap.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sarahlessner/burger/issues"
+    "url": "https://github.com/sarahlessner/student-swap/issues"
   },
-  "homepage": "https://github.com/sarahlessner/burger#readme",
+  "homepage": "https://github.com/sarahlessner/student-swap#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
-    "express": "^4.15.3",
-    "express-handlebars": "^3.0.0",
+    "express": "^4.15.4",
     "method-override": "^2.3.9",
     "mysql": "^2.14.1",
+    "mysql2": "^1.4.1",
+    "path": "^0.12.7",
     "sequelize": "^4.5.0"
   }
 }
