@@ -1,3 +1,9 @@
+// NOTE: hey guys, all of this is the authentication code.
+//it basically gives us access to the users name, email, photo,
+//and unique google id.
+// in addition to that, it also stores this data in local storage
+// and clears it on sign out. 
+
 $(document).ready(function() {
   var config = {
     apiKey: "AIzaSyBW7RkLfboNj8SNn22MD_dgRCfToPFVJBk",

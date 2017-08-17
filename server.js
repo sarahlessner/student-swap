@@ -33,7 +33,7 @@ app.set("view engine", "handlebars");
 var routes = require('./controllers/landing_controller.js');
 app.use("/", routes);
 
-// Syncing our sequeliz e models and then starting our Express app
+// Syncing our sequelize models and then starting our Express app
 //{ force: true }
 // db.sequelize.sync({ force: true }).then(function() {
 //   app.listen(PORT, function() {
@@ -42,6 +42,7 @@ app.use("/", routes);
 // });
 
 // NOTE: this is a temporary setting just to test the view
+//the actual set up is commented out above from line 36
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });
