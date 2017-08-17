@@ -14,16 +14,24 @@ module.exports = function(sequelize, DataTypes) {
     },
     photo: {
       type: DataTypes.STRING,
+    },
+     createdAt: { 
+      type: DataTypes.DATE, 
+      defaultValue: sequelize.fn('now') 
+    },
+    updatedAt: { 
+      type: DataTypes.DATE, 
+      defaultValue: sequelize.fn('now') 
     }
   });
 
   User.associate = function(models) {
     // Associating User with their Work Orders
     // When a user is deleted, also delete any associated skills offered/wanted
-    User.hasMany(models.skills_offered, {
+    User.hasMany(models.Offered, {
       onDelete: "cascade"
     });
-    User.hasMany(models.skills_wanted, {
+    User.hasMany(models.Wanted, {
       onDelete: "cascade"
     });
   };
