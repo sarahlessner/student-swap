@@ -76,5 +76,14 @@ body{
 
 }
 
+.col-md-3 {
+	height:50px;
+	background-color: #e7e7e7;
+}
+
+#main_results {
+	height: 400px;
+	background-color: #f9f9f9;
+}
 
 
