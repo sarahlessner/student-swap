@@ -2,12 +2,10 @@
 
 An app that allows student to trade skills!
 
-#ashish was here
+By:
 
-Sarah Lessner
-
-
+Ashish
+Sarah
 Tali
 
 
-POOP

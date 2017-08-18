@@ -1,6 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
   //create offered table - all non-automatic data comes from users/skills
-  var Offered = sequelize.define("Offered", {});
+  var Offered = sequelize.define("Offered", {
+    createdAt: { 
+      type: DataTypes.DATE, 
+      defaultValue: sequelize.fn('now') 
+    },
+    updatedAt: { 
+      type: DataTypes.DATE, 
+      defaultValue: sequelize.fn('now') 
+    }
+  });
 
   Offered.associate = function(models) {
     // An offer should belong to both skills and users
@@ -16,6 +25,10 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
+    Offered.hasMany(models.Wanted, {
+      //delete any skills wanted tied to this exchange
+      onDelete: "cascade"
+    })
   };
 
   return Offered;

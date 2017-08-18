@@ -46,14 +46,14 @@ app.use("/", routes);
 
 // Syncing our sequelize models and then starting our Express app
 //{ force: true }
-// db.sequelize.sync({ force: true }).then(function() {
-//   app.listen(PORT, function() {
-//     console.log("App listening on PORT " + PORT);
-//   });
-// });
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+});
 
 // NOTE: this is a temporary setting just to test the view
 //the actual set up is commented out above from line 36
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
-});
+// app.listen(PORT, function() {
+//   console.log("App listening on PORT " + PORT);
+// });
