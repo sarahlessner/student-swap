@@ -1,0 +1,64 @@
+/* NOTE: for upperhome page */
+#logo_line {
+  background-color: #4e638a;
+}
+
+#logo_homepage{
+	width:7%;
+	height:7%;
+	margin:10px;
+	float:left;
+}
+
+#logout_button{
+  padding:10px;
+  background-color: #529cc4;
+  border:none;
+  color:white;
+  border-radius: 10px;
+  float:right;
+  margin: 10px;
+}
+
+/* NOTE: User Bar */
+#user_bar{
+  margin-top: 10px;
+}
+#profile_photo{
+/*background-color:pink;*/
+	height:200px;
+}
+
+#display_picture{
+  border-radius: 100%;
+}
+
+/*#user_area{
+  text-align: left;
+}*/
+
+#update_button{
+  padding:10px;
+  background-color: #529cc4;
+  /*background-color: #00da37;*/
+  border:none;
+  color:white;
+  border-radius: 10px;
+}
+
+#listings{
+  border: thick solid lightgrey;
+  border-width: 1px;
+  /* NOTE: height for this should be fixed to allow people to
+  scroll through content */
+  height:220px;
+  background-color: #f9f9f9;
+}
+
+/* NOTE: results section */
+#main_results {
+	height: 400px;
+  /* NOTE: height for this should be fixed to allow people to
+  scroll through content */
+	background-color: #f9f9f9;
+}

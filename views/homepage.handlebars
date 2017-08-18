@@ -1,76 +1,17 @@
-{{!-- This is the landing page --}}
-
-  
+{{!-- This is the homepage page --}}
 <div class="container">
-
   <div class="row" id="logo_line">
-  LOGO LINE
+    {{>header}}
   </div>
-
-  
-  <div class="row">
-   
-    <div class="col-md-8">
-   		
-    	<div class="row">
-	    	<div class="col-md-6" id="profile_photo">
-	   		PROFILE PHOTO
-	   	    </div>
-
-	    	<div class="col-md-6" id="user_area">
-
-	     	  <div class="row" id="welcome">
-	     	  WELCOME NAME
-	     	  </div>
-
-		      <div class="row" id="your_offer">
-		      YOUR OFFER
-		      </div>
-		      
-		      <div class="row" id="your_request">
-		      YOUR REQUEST
-		      </div>
-		      
-		      <div class="row" id="update_details">
-		      UPDATE DETAILS
-		      </div>
-		    </div>
-		</div>
-
-   	</div>
-
-    <div class="col-md-4" id="right_bar">
-        
-        <div class="row" id="right_bar_tabs">
-	        <div class="col-md-6" id="right_bar_received">
-	        SWAPS RECEIVED
-	        </div>
-	        <div class="col-md-6" id="right_bar_sent">
-	        SWAPS SENT
-	        </div>
-        </div>
-
-    	<div class="row" id="right_bar_listings">
-    	LISTINGS
-    	</div>
-
-
+  <div class="row" id="user_bar">
+    <div class="col-md-8" id="user_info">
+      {{>userinfo}}
     </div>
-
+    <div class="col-md-4" id="swap_log">
+      {{>swaplog}}
+    </div>
   </div>
-
-
-  <div class="row" id="main_tabs">
-  	<div class="col-md-3" id="perfect_match">perfect_match</div>
-    <div class="col-md-3" id="offer_match">offer_match</div>
-    <div class="col-md-3" id="request_match">request_match</div>
-    <div class="col-md-3" id="all_services">all_services</div>
+  <div id="main_tabs">
+    {{>swapresults}}
   </div>
-
-  <div class="row" id="main_results">
-  RESULTS
-  </div>
-
-
 </div>
-
