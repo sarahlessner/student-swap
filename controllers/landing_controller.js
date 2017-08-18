@@ -11,4 +11,16 @@ router.get("/", function(req, res) {
     res.render("index", hbsObject);
 });
 
+router.get("/signin", function(req, res) {
+  var hbsObject = {};
+    res.render("signin", hbsObject);
+});
+
+router.get("/homepage", function(req, res) {
+  var hbsObject = {};
+    res.render("homepage", hbsObject);
+});
+
+
+
 module.exports = router;

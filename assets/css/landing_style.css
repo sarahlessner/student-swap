@@ -7,6 +7,7 @@ body{
   height:15%;
 }
 
+
 .creators{
   background-color: #4e638a;
   padding:20px;
@@ -16,3 +17,64 @@ body{
   border-radius: 100%;
   width:40%;
 }
+
+#welcome {
+	background-color:aqua;
+	height:50px;
+}
+
+#profile_photo {
+	background-color:pink;
+	height:200px;
+}
+
+
+#your_offer {
+	background-color:red;
+	height:50px;
+}
+
+#your_request {
+	background-color:green;
+	height:50px;
+}
+
+#update_details {
+	background-color:gray;
+	height:50px;
+}
+
+
+#right_bar {
+	background-color:yellow;
+	height:200px;
+}
+
+#right_bar_tabs {
+	background-color:yellow;
+	height:50px;
+}
+
+#right_bar_received {
+	background-color:brown;
+	height:50px;
+}
+
+#right_bar_sent {
+	background-color:purple;
+	height:50px;
+}
+
+#right_bar_listings{
+	background-color:orange;
+	height:150px;
+}
+
+#logo_line {
+  height:50px;
+  background-color: gray;
+
+}
+
+
+
