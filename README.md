@@ -11,5 +11,3 @@ Tali
 
 
 POOP
-
-LALA
