@@ -28,6 +28,25 @@ VALUES
   	("012345", "Ashish", "ashish@ashish.com", "ashishsphoto.com"),
   	("012346", "Tali", "tali@tali.com", "talisphoto.com");
   
+  INSERT INTO offereds
+      (skillId, UserId)
+  SELECT 
+       skill.id,
+       (SELECT user.id
+          FROM users user
+         WHERE user.name = 'Sarah')
+  FROM skills skill
+  WHERE skill.skill_name = 'laundry';
 
-
-
+  INSERT INTO wanteds
+        (skillId, OfferedId, UserId)
+    SELECT 
+         skill.id,
+         (SELECT offer.id
+            FROM offereds offer
+           WHERE offer.Skillid = '1'),
+           (SELECT user.id
+            FROM users user
+           WHERE user.name = 'Sarah')
+    FROM skills skill
+   WHERE skill.skill_name = 'laundry'
