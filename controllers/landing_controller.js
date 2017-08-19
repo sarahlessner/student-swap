@@ -17,8 +17,27 @@ router.get("/signin", function(req, res) {
 });
 
 router.get("/homepage", function(req, res) {
-  var hbsObject = {};
-    res.render("homepage", hbsObject);
+    
+    db.User.findOne({
+      where: {
+      	id: 1
+      }
+    }).then(function(dbUser) {
+    	console.log(dbUser);
+/*    	
+	  var hbsObject = {
+	  	name: db.User.name,
+	  	userimg: "/img/dp-placeholder.gif"
+	  };
+*/
+		var hbsObject = {
+			results: dbUser
+		}
+	  res.render("homepage", hbsObject);
+    });
+
+
+	//actual user info from db will populate name
 });
 
 
