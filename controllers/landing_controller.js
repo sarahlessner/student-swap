@@ -12,6 +12,62 @@ module.exports = function(app) {
     res.render("../views/index", hbsObject);
   });
 
+  app.get("/signin", function(req, res) {
+
+
+  db.Skill.findAll ({}).then(function(data) {
+
+    var allskills = {
+      skills: data
+    };
+    console.log(allskills);
+
+    res.render("../views/signin", allskills);
+
+      });
+});
+
+  app.get("/homepage", function(req, res) {
+    
+    db.User.findOne({
+      where: {
+        id: 1
+      }
+    }).then(function(dbUser) {
+      console.log(dbUser);
+/*      
+    var hbsObject = {
+      name: db.User.name,
+      userimg: "/img/dp-placeholder.gif"
+    };
+*/
+    var hbsObject = {
+      results: dbUser
+    }
+    res.render("../views/homepage", hbsObject);
+    });
+
+
+  //actual user info from db will populate name
+});
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   // app.get("/homepage", function(req, res) {
@@ -31,37 +87,39 @@ module.exports = function(app) {
 
    
 
-router.get("/signin", function(req, res) {
 
 
-  db.Skill.findAll ({}).then(function(data) {
+// router.get("/signin", function(req, res) {
 
-    var allskills = {
-      skills: data
-    };
-    console.log(allskills);
 
-  // for (i=0; i<data.length; i++) {
-  //   allskills.push(data[i].dataValues.skill_name)
-  // }
+//   db.Skill.findAll ({}).then(function(data) {
 
-  // console.log(allskills);
-    // var allskills = {
-    //   skills: data.Skill.dataValues.skill_name
-    // };
-    // console.log(allskills);
+//     var allskills = {
+//       skills: data
+//     };
+//     console.log(allskills);
 
-//TALI DOES THIS:
+//   // for (i=0; i<data.length; i++) {
+//   //   allskills.push(data[i].dataValues.skill_name)
+//   // }
 
-  // Find all skils
-  // Get the skill list out of there and run it through
-  // the signin handlebar like so:
+//   // console.log(allskills);
+//     // var allskills = {
+//     //   skills: data.Skill.dataValues.skill_name
+//     // };
+//     // console.log(allskills);
 
-  // var hbsObject = {};
-    res.render("signin", allskills);
+// //TALI DOES THIS:
 
-      });
-});
+//   // Find all skils
+//   // Get the skill list out of there and run it through
+//   // the signin handlebar like so:
+
+//   // var hbsObject = {};
+//     res.render("signin", allskills);
+
+//       });
+// });
 
 
 // 		var hbsObject = {
@@ -78,5 +136,3 @@ router.get("/signin", function(req, res) {
 // 	//actual user info from db will populate name
 // });
 
-
-};
