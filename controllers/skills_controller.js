@@ -9,10 +9,15 @@ module.exports = function(app) {
 
 };
 
-//app.post to create user object from google authentication will live in this file
 
-//app.get to pass user object to landing controller /homepage route
+//get route to pass skills wherever skills need to be displayed
 
-//may also pass user object for name of match
 
-//app.get 
+// module.exports = function(app) {
+
+// 	app.get("/", function(req, res) {
+// 	  var hbsObject = {};
+// 	    res.render("index", hbsObject);
+// 	});
+
+// };

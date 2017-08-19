@@ -1,15 +1,35 @@
 const express = require("express");
-const app = express();
 const path = require("path");
 const body = require("body-parser");
-const db = require(path.join(__dirname,".." ,"models"));
+const db = require("../models");
 
-const router = express.Router();
+// const router = express.Router();
 
-router.get("/", function(req, res) {
+module.exports = function(app) {
+
+  app.get("/", function(req, res) {
   var hbsObject = {};
-    res.render("index", hbsObject);
-});
+    res.render("../views/index", hbsObject);
+  });
+
+
+
+  // app.get("/homepage", function(req, res) {
+  //   var dbUser;
+  //   var skillsDB;
+
+  //   db.User.findOne({
+  //     where: {
+  //     	id: 1
+  //     }
+  //   }).then(function(dbUserStuff) {
+
+  //   	console.log(dbUserStuff);
+  //     dbUser = dbUserStuff;
+  //   });
+
+
+   
 
 router.get("/signin", function(req, res) {
 
@@ -44,30 +64,19 @@ router.get("/signin", function(req, res) {
 });
 
 
-router.get("/homepage", function(req, res) {
-    
-    db.User.findOne({
-      where: {
-      	id: 1
-      }
-    }).then(function(dbUser) {
-    	console.log(dbUser);
-/*    	
-	  var hbsObject = {
-	  	name: db.User.name,
-	  	userimg: "/img/dp-placeholder.gif"
-	  };
-*/
-		var hbsObject = {
-			results: dbUser
-		}
-	  res.render("homepage", hbsObject);
-    });
+// 		var hbsObject = {
+//       //user info
+// 			results: dbUser,
+//       //skills
+//       skillsMatch: skillsDB
+
+// 		}
+// 	  res.render("homepage", hbsObject);
+//     });
 
 
-	//actual user info from db will populate name
-});
+// 	//actual user info from db will populate name
+// });
 
 
-
-module.exports = router;
+};
