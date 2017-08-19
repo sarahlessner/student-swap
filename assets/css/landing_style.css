@@ -9,7 +9,10 @@ body{
 
 #greeting{
   color:#4e638a;
-  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.title {
 }
 
 .creators{
@@ -24,9 +27,14 @@ body{
 }
 
 #login_button{
-  padding:10px;
-  background-color: #529cc4;
-  border:none;
-  color:white;
-  border-radius: 10px;
+border: none;
+background: none;
+cursor: pointer;
+
+}
+
+#landing-image {
+  width: 300px;
+  height: 300px;
+  padding: 20px;
 }
