@@ -1,8 +1,4 @@
 
-//-------------
-//yo for now this existing code is just copied from the burger sequelized project as a start
-//----------
-
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
@@ -52,8 +48,4 @@ db.sequelize.sync().then(function() {
   });
 });
 
-// NOTE: this is a temporary setting just to test the view
-//the actual set up is commented out above from line 36
-// app.listen(PORT, function() {
-//   console.log("App listening on PORT " + PORT);
-// });
+

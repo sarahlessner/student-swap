@@ -31,22 +31,22 @@ VALUES
   INSERT INTO offereds
       (skillId, UserId)
   SELECT 
-       skill.id,
+    skill.id,
        (SELECT user.id
           FROM users user
-         WHERE user.name = 'Sarah')
-  FROM skills skill
-  WHERE skill.skill_name = 'laundry';
+          WHERE user.name = 'Sarah')
+    FROM skills skill
+    WHERE skill.skill_name = 'laundry';
 
   INSERT INTO wanteds
         (skillId, OfferedId, UserId)
-    SELECT 
-         skill.id,
-         (SELECT offer.id
-            FROM offereds offer
-           WHERE offer.Skillid = '1'),
-           (SELECT user.id
-            FROM users user
-           WHERE user.name = 'Sarah')
+  SELECT 
+    skill.id,
+      (SELECT offer.id
+        FROM offereds offer
+        WHERE offer.Skillid = '1'),
+      (SELECT user.id
+        FROM users user
+        WHERE user.name = 'Sarah')
     FROM skills skill
-   WHERE skill.skill_name = 'laundry'
+    WHERE skill.skill_name = 'laundry'
