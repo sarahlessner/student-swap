@@ -24,13 +24,33 @@ module.exports = function(app) {
 
 // };
 
+// router.get("/signin", function(req, res) {
+
 
 // router.get("/signin", function(req, res) {
+=======
 
 
 //   var hbsObject = {};
 //     res.render("signin", hbsObject);
 
+//   var hbsObject = {};
+//     res.render("signin", hbsObject);
+
+//   // db.Skill.findAll ({}).then(function(data) {
+
+//   //   console.log(data);
+
+// //TALI DOES THIS:
+
+//   // Find all skils
+//   // Get the skill list out of there and run it through
+//   // the signin handlebar like so:
+
+//   // var hbsObject = {};
+//   //   res.render("signin", data);
+
+=======
 //   // db.Skill.findAll ({}).then(function(data) {
 
 //   //   console.log(data);
