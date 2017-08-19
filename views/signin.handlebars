@@ -2,26 +2,24 @@
 {{!-- enter their offers and requests --}}
 
 
-{{!TALI: FISRT ONE IS SINGEL SELECT 2ND ONE IS MULTISELECT}}
+<h2>SKILL I CAN OFFER (chose one)</h2>
 
-
-<div class="container">
   <form>
-  Skill I need:<br>
-    <select name="cars">
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="fiat">Fiat</option>
-    <option value="audi">Audi</option>
-  </select><br>
-    Skill I can offer:<br>
-    <select name="cars">
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="fiat">Fiat</option>
-    <option value="audi">Audi</option>
-  </select><br>
+  <select name="skills_offer">
+  {{#each skills}}
+      <option value="{{this.dataValues.skill_name}}">{{this.dataValues.skill_name}}
+      </option>
+  {{/each}}
+  </select>
+ 
 
-  <input type="submit">
-</form>
-</div>
+<h2>SKILL I NEED (chose as many as you like)</h2>
+
+
+    {{#each skills}}
+      <input type="checkbox" name="{{this.dataValues.skill_name}}" value="{{this.dataValues.skill_name}}">{{this.dataValues.skill_name}}<br>
+  {{/each}}
+
+<input type="submit">
+
+  </form>
