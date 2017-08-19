@@ -28,7 +28,7 @@ module.exports = function(app) {
 
 
 // router.get("/signin", function(req, res) {
-=======
+
 
 
 //   var hbsObject = {};
@@ -50,7 +50,6 @@ module.exports = function(app) {
 //   // var hbsObject = {};
 //   //   res.render("signin", data);
 
-=======
 //   // db.Skill.findAll ({}).then(function(data) {
 
 //   //   console.log(data);
