@@ -65,4 +65,26 @@ module.exports = function(app) {
 
 //       // });
 // });
+=======
+module.exports = function(app) {
+  //all app.gets, post, etc need to live here
+
+app.get("/signin", function(req, res) {
+
+
+  db.Skill.findAll ({}).then(function(data) {
+
+    var allskills = {
+      skills: data
+    };
+
+    res.render("../views/signin", allskills);
+
+      });
+});
+
+};
+
+
+
 
