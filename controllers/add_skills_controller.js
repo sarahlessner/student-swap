@@ -6,18 +6,21 @@ const db = require(path.join(__dirname,".." ,"models"));
 module.exports = function(app) {
   //all app.gets, post, etc need to live here
 
+app.get("/signin", function(req, res) {
+
+
+  db.Skill.findAll ({}).then(function(data) {
+
+    var allskills = {
+      skills: data
+    };
+
+    res.render("../views/signin", allskills);
+
+      });
+});
 
 };
 
 
-//get route to pass skills wherever skills need to be displayed
 
-
-// module.exports = function(app) {
-
-// 	app.get("/", function(req, res) {
-// 	  var hbsObject = {};
-// 	    res.render("index", hbsObject);
-// 	});
-
-// }/

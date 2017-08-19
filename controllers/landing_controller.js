@@ -12,20 +12,7 @@ module.exports = function(app) {
     res.render("../views/index", hbsObject);
   });
 
-  app.get("/signin", function(req, res) {
 
-
-  db.Skill.findAll ({}).then(function(data) {
-
-    var allskills = {
-      skills: data
-    };
-    console.log(allskills);
-
-    res.render("../views/signin", allskills);
-
-      });
-});
 
   app.get("/homepage", function(req, res) {
     
@@ -34,7 +21,6 @@ module.exports = function(app) {
         id: 1
       }
     }).then(function(dbUser) {
-      console.log(dbUser);
 /*      
     var hbsObject = {
       name: db.User.name,

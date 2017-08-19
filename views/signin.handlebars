@@ -5,7 +5,7 @@
 <h2>SKILL I CAN OFFER (chose one)</h2>
 
   <form>
-  <select name="skills_offer">
+  <select name="skills_offer" id="offer">
   {{#each skills}}
       <option value="{{this.dataValues.skill_name}}">{{this.dataValues.skill_name}}
       </option>
@@ -17,9 +17,11 @@
 
 
     {{#each skills}}
-      <input type="checkbox" name="{{this.dataValues.skill_name}}" value="{{this.dataValues.skill_name}}">{{this.dataValues.skill_name}}<br>
+      <input type="checkbox" id="{{this.dataValues.id}}" value="{{this.dataValues.skill_name}}">{{this.dataValues.skill_name}}<br>
   {{/each}}
 
-<input type="submit">
+<button type="submit" id="signin">Poops</button>
 
   </form>
+
+
