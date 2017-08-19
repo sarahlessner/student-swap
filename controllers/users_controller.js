@@ -10,3 +10,5 @@ const db = require(path.join(__dirname,".." ,"models"));
 //app.get to pass user object to landing controller /homepage route
 
 //may also pass user object for name of match
+
+//app.get 
