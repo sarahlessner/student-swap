@@ -1,9 +1,13 @@
 const express = require("express");
-const app = express();
 const path = require("path");
 const body = require("body-parser");
 const db = require(path.join(__dirname,".." ,"models"));
 
+module.exports = function(app) {
+  //all app.gets, post, etc need to live here
+
+
+};
 
 //get route - basic example below 
 //either will get every offer OR every offer per particular user id

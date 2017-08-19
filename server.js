@@ -37,14 +37,9 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 //new controller for that serves the landing page
-var routes = require('./controllers/landing_controller.js');
-app.use("/", routes);
+require('./controllers')(app);
 
-// require('./controllers/skills_offered_controller.js')(app);
-// require('./controllers/skills_wanted_controller.js')(app);
-// require('./controllers/skills_controller.js')(app);
-// require('./controllers/users_controller.js')(app);
-
+// require("./controllers/landing_controller.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // { force: true }
