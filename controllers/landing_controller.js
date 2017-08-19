@@ -11,6 +11,37 @@ router.get("/", function(req, res) {
     res.render("index", hbsObject);
 });
 
+router.get("/signin", function(req, res) {
+
+
+  db.Skill.findAll ({}).then(function(data) {
+
+    var allskills = {
+      skills: data
+    };
+    console.log(allskills);
+
+  // for (i=0; i<data.length; i++) {
+  //   allskills.push(data[i].dataValues.skill_name)
+  // }
+
+  // console.log(allskills);
+    // var allskills = {
+    //   skills: data.Skill.dataValues.skill_name
+    // };
+    // console.log(allskills);
+
+//TALI DOES THIS:
+
+  // Find all skils
+  // Get the skill list out of there and run it through
+  // the signin handlebar like so:
+
+  // var hbsObject = {};
+    res.render("signin", allskills);
+
+      });
+});
 
 
 router.get("/homepage", function(req, res) {
