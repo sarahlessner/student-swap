@@ -6,7 +6,33 @@ const db = require(path.join(__dirname,".." ,"models"));
 module.exports = function(app) {
   //all app.gets, post, etc need to live here
 
+  //get all from offered where id is current users id
+  //I think this goes to matching function in matchDisplay js?
+  app.get("/homepage/offermatch/:UserId", function(req, res) {
+    // console.log(req);
+    db.Offered.findAll({
+      where: {
+        UserId: req.params.UserId
+      }
+    }).then(function(useroffers) {
+      // console.log("req body skillid", req.body.SkillId);
+      // console.log(useroffers[0].SkillId);
+      // res.json(useroffers);
+      db.Wanted.findAll({
+        where: {
+          SkillId: useroffers[0].SkillId
 
+        }
+      }).then(function(offerwanted){
+        // console.log(offerwanted);
+        res.json(useroffers)
+      })
+    });
+  });
+
+
+
+//end of module.export
 };
 
 //get route - basic example below

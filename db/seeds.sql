@@ -36,7 +36,7 @@ VALUES
           FROM users user
           WHERE user.name = 'Sarah')
     FROM skills skill
-    WHERE skill.skill_name = 'laundry';
+    WHERE skill.skill_name = 'Make you a fake id';
 
   INSERT INTO wanteds
         (skillId, OfferedId, UserId)
@@ -49,4 +49,4 @@ VALUES
         FROM users user
         WHERE user.name = 'Sarah')
     FROM skills skill
-    WHERE skill.skill_name = 'laundry'
+    WHERE skill.skill_name = 'Post-party cleanup'
