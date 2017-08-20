@@ -1,14 +1,8 @@
 const express = require("express");
-<<<<<<< HEAD
-const app = express();
-=======
->>>>>>> upstream/master
 const path = require("path");
 const body = require("body-parser");
 const db = require(path.join(__dirname,".." ,"models"));
 
-<<<<<<< HEAD
-=======
 
 module.exports = function(app) {
   //all app.gets, post, etc need to live here
@@ -16,7 +10,6 @@ module.exports = function(app) {
 
 };
 
->>>>>>> upstream/master
 //get route to pass skills wherever skills need to be displayed
 
 // Displaying the skills for the dropdown / checkbox
@@ -34,8 +27,6 @@ module.exports = function(app) {
 // router.get("/signin", function(req, res) {
 
 
-<<<<<<< HEAD
-=======
 // router.get("/signin", function(req, res) {
 
 
@@ -43,7 +34,6 @@ module.exports = function(app) {
 //   var hbsObject = {};
 //     res.render("signin", hbsObject);
 
->>>>>>> upstream/master
 //   var hbsObject = {};
 //     res.render("signin", hbsObject);
 
@@ -60,8 +50,6 @@ module.exports = function(app) {
 //   // var hbsObject = {};
 //   //   res.render("signin", data);
 
-<<<<<<< HEAD
-=======
 //   // db.Skill.findAll ({}).then(function(data) {
 
 //   //   console.log(data);
@@ -75,7 +63,5 @@ module.exports = function(app) {
 //   // var hbsObject = {};
 //   //   res.render("signin", data);
 
->>>>>>> upstream/master
 //       // });
 // });
-

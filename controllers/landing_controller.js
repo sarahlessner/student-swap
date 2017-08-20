@@ -7,8 +7,12 @@ const db = require("../models");
 
 module.exports = function(app) {
 
-<<<<<<< HEAD
-router.get("/signin", function(req, res) {
+  app.get("/", function(req, res) {
+  var hbsObject = {};
+    res.render("../views/index", hbsObject);
+  });
+
+  app.get("/signin", function(req, res) {
 
 
   db.Skill.findAll ({}).then(function(data) {
@@ -18,67 +22,20 @@ router.get("/signin", function(req, res) {
     };
     console.log(allskills);
 
-  // for (i=0; i<data.length; i++) {
-  //   allskills.push(data[i].dataValues.skill_name)
-  // }
-
-  // console.log(allskills);
-    // var allskills = {
-    //   skills: data.Skill.dataValues.skill_name
-    // };
-    // console.log(allskills);
-
-//TALI DOES THIS:
-
-  // Find all skils
-  // Get the skill list out of there and run it through
-  // the signin handlebar like so:
-
-  // var hbsObject = {};
-    res.render("signin", allskills);
+    res.render("../views/signin", allskills);
 
       });
 });
 
-
-router.get("/homepage", function(req, res) {
-    
-    db.User.findOne({
-      where: {
-      	id: 1
-      }
-    }).then(function(dbUser) {
-    	console.log(dbUser);
-/*    	
-	  var hbsObject = {
-	  	name: db.User.name,
-	  	userimg: "/img/dp-placeholder.gif"
-	  };
-*/
-		var hbsObject = {
-			results: dbUser
-		}
-	  res.render("homepage", hbsObject);
-    });
-
-
-	//actual user info from db will populate name
-=======
-  app.get("/", function(req, res) {
-  var hbsObject = {};
-    res.render("../views/index", hbsObject);
-  });
-
-
-
   app.get("/homepage", function(req, res) {
-    
+
     db.User.findOne({
       where: {
         id: 1
       }
     }).then(function(dbUser) {
-/*      
+      console.log(dbUser);
+/*
     var hbsObject = {
       name: db.User.name,
       userimg: "/img/dp-placeholder.gif"
@@ -92,7 +49,6 @@ router.get("/homepage", function(req, res) {
 
 
   //actual user info from db will populate name
->>>>>>> upstream/master
 });
 
 
@@ -129,7 +85,7 @@ router.get("/homepage", function(req, res) {
   //   });
 
 
-   
+
 
 
 
@@ -179,4 +135,3 @@ router.get("/homepage", function(req, res) {
 
 // 	//actual user info from db will populate name
 // });
-
