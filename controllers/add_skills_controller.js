@@ -36,6 +36,8 @@ app.post("/offeredskill", function(req, res) {
 
 });
 
+
+
 app.post("/wantedskills", function(req, res) {
 
 
@@ -47,5 +49,22 @@ app.post("/wantedskills", function(req, res) {
 	console.log("wanted skills ids are "+wanted_skill_ids);
 
 });
+
+db.skills_offered.create({
+
+// NEED TO CREATE A NEW OFFERED SKILL WITH THE ABOVE ID
+
+
+}).then(function() {
+      res.redirect("/");
+    });
+
+db.skills_wanted.create({
+// NEED TO CREATE NEW WANTED SKILLS WITH THE ABOVE IDS AND MAKE SURE 
+// THEY MATH THE USER AND THE OFFERED SKILL
+}).then(function() {
+      res.redirect("/");
+    });
+
 
 };
