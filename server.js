@@ -41,6 +41,12 @@ require('./controllers')(app);
 
 // require("./controllers/landing_controller.js")(app);
 
+// require('./controllers/skills_offered_controller.js')(app);
+// require('./controllers/skills_wanted_controller.js')(app);
+// require('./controllers/skills_controller.js')(app);
+// require('./controllers/users_controller.js')(app);
+
+
 // Syncing our sequelize models and then starting our Express app
 // { force: true }
 db.sequelize.sync().then(function() {
