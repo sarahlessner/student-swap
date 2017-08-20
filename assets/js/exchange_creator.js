@@ -13,9 +13,24 @@ $(document).ready(function() {
               }
       }
 
-      console.log(wanted_skills);
-            console.log("offered"+offered_skill);
+      console.log("ARRAY "+wanted_skills);
 
+
+      var wanted_skills_object = {};
+
+      for (i=0; i<wanted_skills.length; i++) {
+
+              wanted_skills_object[i] = wanted_skills[i];
+
+            }
+
+
+
+
+      $.post("/offeredskill", offered_skill).then(function(response){})
+
+
+      $.post("/wantedskills", wanted_skills_object).then(function(response){})
 
       });
 
