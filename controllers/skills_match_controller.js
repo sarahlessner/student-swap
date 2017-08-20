@@ -9,7 +9,7 @@ module.exports = function(app) {
 
 };
 
-//get route - basic example below 
+//get route - basic example below
 //either will get every offer OR every offer per particular user id
 
   // app.get("/offers", function(req, res) {
@@ -24,8 +24,8 @@ module.exports = function(app) {
   //   });
   // });
 
-//app.get match - complex matching logic 
+//app.get match - complex matching logic
 //query all other databases from here
 
-//need a destroy for users to remove skills offered 
+//need a destroy for users to remove skills offered
 	//will also delete any skills wanted automatically
