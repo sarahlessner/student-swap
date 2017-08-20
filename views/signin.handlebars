@@ -5,36 +5,23 @@
 <h2>SKILL I CAN OFFER (chose one)</h2>
 
   <form>
-<<<<<<< HEAD
-  <select name="skills_offer">
-=======
+
   <select name="skills_offer" id="offer">
->>>>>>> upstream/master
   {{#each skills}}
       <option value="{{this.dataValues.skill_name}}">{{this.dataValues.skill_name}}
       </option>
   {{/each}}
   </select>
- 
+
 
 <h2>SKILL I NEED (chose as many as you like)</h2>
 
 
     {{#each skills}}
-<<<<<<< HEAD
-      <input type="checkbox" name="{{this.dataValues.skill_name}}" value="{{this.dataValues.skill_name}}">{{this.dataValues.skill_name}}<br>
-  {{/each}}
 
-<input type="submit">
-
-  </form>
-=======
       <input type="checkbox" id="{{this.dataValues.id}}" value="{{this.dataValues.skill_name}}">{{this.dataValues.skill_name}}<br>
   {{/each}}
 
 <button type="submit" id="signin">Poops</button>
 
   </form>
-
-
->>>>>>> upstream/master
