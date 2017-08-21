@@ -34,6 +34,7 @@ $(document).ready(function() {
       localStorage.removeItem("picture");
       localStorage.removeItem("email");
       localStorage.removeItem("guid");
+      window.location.href = window.location.origin;
       console.log("You've signed out");
     }).catch(function(error) {
       // An error happened.

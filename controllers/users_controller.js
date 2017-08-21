@@ -22,7 +22,9 @@ module.exports = function(app) {
         }).then(result => {
           console.log("successfully wrote new user to database");
           // redirect stuff still not working
-          res.send({redirect: "signin"});
+          console.log(result);
+          res.send({redirect: "signin",
+                  user_data : result.dataValues});
         });
       } else {
         console.log(data.dataValues);
