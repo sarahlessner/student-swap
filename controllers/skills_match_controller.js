@@ -6,7 +6,6 @@ const db = require(path.join(__dirname,".." ,"models"));
 
 module.exports = function(app) {
 
-  //TODO: figure out where UserId param ought to come from when full app is together
   app.get("/homepage/perfectmatch/:UserId", function(req, res) {
     // console.log(req);
     db.Offered.findAll({
@@ -31,13 +30,47 @@ module.exports = function(app) {
             }).then(function(paymentfound){
                   // console.log("payment found!", paymentfound);
               for (var k = 0; k < paymentfound.length; k++) {
+                // var skillwanted = paymentfound[k].SkillId;
+
                 db.Wanted.findAll({
                   where: {
                     OfferedId: paymentfound[k].id,
                     SkillId: myCurrentOffer
                   },
-                  include: [{model: db.User, where:{id: paymentfound[k].UserId}}]
+                  include: [
+                  { 
+                    model: db.User
+                  },
+                  {
+                    model: db.Skill,
+                    where: {
+                      id: myCurrentOffer
+                  },
+                  //   model: db.Skill,
+                  //   where: {
+                  //     id: paymentfound[k].OfferedId.SkillId
+                  // }
+                  
+                  }]
                 }).then(function(matchfound){
+                  // var matchFound = matchfound;
+                  // for (var l = 0; l < matchfound.length; l++) {
+                  //   db.Offered.findAll({
+                  //     where: {
+                  //       id: matchfound[l].OfferedId
+                  //     }
+                  //   }).then(function(offermatchfound) {
+                  //     for (var m = 0; m < offermatchfound.length; m++) {
+                  //       db.Skill.findAll({
+                  //         where: {
+                  //           id: offermatchfound[m].SkillId
+                  //         }
+                  //       }).then(function(finalobjectfound){
+                  //         res.json(finalobjectfound);
+                  //       });
+                  //     }
+                  //   });
+                  // }
                   // console.log("MATCH FOUND BITCHES", matchfound);
                   res.json(matchfound);
                 });
@@ -49,7 +82,23 @@ module.exports = function(app) {
     });
   });
 
-
+  app.get("/homepage/perfectmatchoffer/:OfferedId", function(req, res) {
+    // console.log("get route is happening");
+    db.Offered.findAll({
+      where: {
+        id: req.params.OfferedId
+      }
+    }).then(function(offerfound){
+      // console.log("offerfound", offerfound);
+      db.Skill.findAll({
+        where: {
+          id: offerfound[0].SkillId
+        }
+      }).then(function(skillofferedfound){
+        res.json(skillofferedfound);
+      })
+    });
+  });
 
 //end of module.export(app)
 };
