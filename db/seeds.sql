@@ -1,6 +1,6 @@
 USE skillswap_db;
 
-INSERT INTO skills
+INSERT INTO Skills
   (skill_name)
 VALUES
   ("Do your math homework"),
@@ -21,7 +21,7 @@ VALUES
   ("Make you a fake id"),
   ("Social media manager");
 
-  INSERT INTO users
+  INSERT INTO Users
   	(google_id, name, email, photo)
   VALUES
   	("012344", "Sarah", "sarah@sarah.com", "sarahsphoto.com"),
