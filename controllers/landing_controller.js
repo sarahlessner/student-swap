@@ -8,15 +8,15 @@ const db = require("../models");
 
 module.exports = function(app) {
 
-  app.get("/", function(req, res) {
+app.get("/", function(req, res) {
   var hbsObject = {};
-    res.render("../views/index", hbsObject);
-  });
+  res.render("../views/index", hbsObject);
+});
 
-  app.get("/signin", function(req, res) {
+app.get("/signin", function(req, res) {
 
 
-  db.Skill.findAll ({}).then(function(data) {
+  db.Skill.findAll({}).then(function(data) {
 
     var allskills = {
       skills: data
@@ -25,34 +25,34 @@ module.exports = function(app) {
 
     res.render("../views/signin", allskills);
 
-      });
+  });
 });
 
-  app.get("/homepage", function(req, res) {
+app.get("/homepage", function(req, res) {
 
-    //displayMatch(1);
+  //displayMatch(1);
 
-    db.User.findOne({
-      where: {
-        id: 1
-      }
-    }).then(function(dbUser) {
-      console.log(dbUser);
-/*
-    var hbsObject = {
-      name: db.User.name,
-      userimg: "/img/dp-placeholder.gif"
-    };
-*/
-    var hbsObject = {
-      results: dbUser
-    }
-    res.render("../views/homepage", hbsObject);
-    });
-
-
-  //actual user info from db will populate name
+  // db.User.findOne({
+  //   where: {
+  //     id: 1
+  //   }
+  // }).then(function(dbUser) {
+  //   console.log(dbUser);
+  /*
+      var hbsObject = {
+        name: db.User.name,
+        userimg: "/img/dp-placeholder.gif"
+      };
+  */
+  var hbsObject = {
+    results: "dbUser"
+  }
+  res.render("../views/homepage", hbsObject);
 });
+
+
+//actual user info from db will populate name
+// });
 
 
 };
@@ -65,27 +65,19 @@ module.exports = function(app) {
 
 
 
+// app.get("/homepage", function(req, res) {
+//   var dbUser;
+//   var skillsDB;
 
+//   db.User.findOne({
+//     where: {
+//     	id: 1
+//     }
+//   }).then(function(dbUserStuff) {
 
-
-
-
-
-
-
-  // app.get("/homepage", function(req, res) {
-  //   var dbUser;
-  //   var skillsDB;
-
-  //   db.User.findOne({
-  //     where: {
-  //     	id: 1
-  //     }
-  //   }).then(function(dbUserStuff) {
-
-  //   	console.log(dbUserStuff);
-  //     dbUser = dbUserStuff;
-  //   });
+//   	console.log(dbUserStuff);
+//     dbUser = dbUserStuff;
+//   });
 
 
 
