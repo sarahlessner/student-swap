@@ -50,7 +50,7 @@ app.post("/wantedskills", function(req, res) {
 
 });
 
-db.skills_offered.create({
+db.Offered.create({
 
 // NEED TO CREATE A NEW OFFERED SKILL WITH THE ABOVE ID
 
@@ -59,7 +59,7 @@ db.skills_offered.create({
       res.redirect("/");
     });
 
-db.skills_wanted.create({
+db.Wanted.create({
 // NEED TO CREATE NEW WANTED SKILLS WITH THE ABOVE IDS AND MAKE SURE 
 // THEY MATH THE USER AND THE OFFERED SKILL
 }).then(function() {
