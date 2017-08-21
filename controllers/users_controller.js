@@ -22,12 +22,15 @@ module.exports = function(app) {
         }).then(result => {
           console.log("successfully wrote new user to database");
           // redirect stuff still not working
-          res.send({redirect: "/signin"});
+          res.send({redirect: "signin"});
         });
       } else {
         console.log(data.dataValues);
         //redirect stuff still not working
-          res.send({redirect: "/homepage"});
+          res.send(
+            {redirect: "homepage",
+            user_data: data.dataValues}
+          );
       }
     });
 
