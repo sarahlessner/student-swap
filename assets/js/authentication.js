@@ -73,7 +73,10 @@ $(document).ready(function() {
         // access to all the existing users.
         $.post("/user/check", userObject)
           .done(function(data){
-            console.log("checking for user in database");
+            console.log(data.redirect);
+            var destination = data.redirect.replace("/","");
+            console.log(window.location);
+            window.location.href = window.location + destination;
           })
 
         //If the we can find the user in the json, we send an object back
