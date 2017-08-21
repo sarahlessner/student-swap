@@ -15,20 +15,25 @@ module.exports = function(sequelize, DataTypes) {
     // A desired skill should belong to both skills and users
     // A desired skill can't be created without a user and a skill
     // and what the user wants in exchange for said skill
-    
+    // Wanted.hasMany(models.Skill, {as: 'skillswanted'});
+    // Wanted.hasMany(models.Skill, {as: 'offeredskills'});
     
     Wanted.belongsTo(models.User, {
       foreignKey: {
+        
         allowNull: false
       }
     });
     Wanted.belongsTo(models.Skill, {
-      foreignKey: {
+       foreignKey: {
+
         allowNull: false
       }
     });
+   
     Wanted.belongsTo(models.Offered, {
       foreignKey: {
+
         allowNull: false
       }
     });
