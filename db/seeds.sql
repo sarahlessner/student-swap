@@ -1,6 +1,6 @@
 USE skillswap_db;
 
-INSERT INTO skills
+INSERT INTO Skills
   (skill_name)
 VALUES
   ("Do your math homework"),
@@ -21,7 +21,7 @@ VALUES
   ("Make you a fake id"),
   ("Social media manager");
 
-  INSERT INTO users
+  INSERT INTO Users
   	(google_id, name, email, photo)
   VALUES
   	("012344", "Sarah", "sarah@sarah.com", "sarahsphoto.com"),
@@ -44,9 +44,32 @@ VALUES
     skill.id,
       (SELECT offer.id
         FROM Offereds offer
-        WHERE offer.Skillid = '1'),
+        WHERE offer.Skillid = '16'),
       (SELECT user.id
         FROM Users user
         WHERE user.name = 'Sarah')
     FROM Skills skill
-    WHERE skill.skill_name = 'Post-party cleanup'
+    WHERE skill.skill_name = 'Color code your closet';
+
+     INSERT INTO Offereds
+      (skillId, UserId)
+  SELECT 
+    skill.id,
+       (SELECT user.id
+          FROM Users user
+          WHERE user.name = 'Tali')
+    FROM Skills skill
+    WHERE skill.skill_name = 'Color code your closet';
+
+  INSERT INTO Wanteds
+        (skillId, OfferedId, UserId)
+  SELECT 
+    skill.id,
+      (SELECT offer.id
+        FROM Offereds offer
+        WHERE offer.Skillid = '2'),
+      (SELECT user.id
+        FROM Users user
+        WHERE user.name = 'Tali')
+    FROM Skills skill
+    WHERE skill.skill_name = 'Make you a fake id';
