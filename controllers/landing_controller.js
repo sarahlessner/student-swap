@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const body = require("body-parser");
 const db = require("../models");
+//var displayMatch = require("../assets/js/match_display.js");
 
 // const router = express.Router();
 
@@ -28,6 +29,8 @@ module.exports = function(app) {
 });
 
   app.get("/homepage", function(req, res) {
+
+    //displayMatch(1);
 
     db.User.findOne({
       where: {

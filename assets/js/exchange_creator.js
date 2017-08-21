@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+      console.log("exchange_creator loading");
       $("#signin").on("click", function(event) {
       event.preventDefault();
       console.log("submitted");

@@ -2,13 +2,12 @@ const express = require("express");
 const path = require("path");
 const body = require("body-parser");
 const db = require(path.join(__dirname,".." ,"models"));
+//var displayMatch = require("../assets/js/matchDisplay.js");
 
 module.exports = function(app) {
-  //all app.gets, post, etc need to live here
 
-  //get all from offered where id is current users id
-  //I think this goes to matching function in matchDisplay js?
-  app.get("/homepage/offermatch/:UserId", function(req, res) {
+  //TODO: figure out where UserId param ought to come from when full app is together
+  app.get("/homepage/perfectmatch/:UserId", function(req, res) {
     // console.log(req);
     db.Offered.findAll({
       where: {
@@ -16,42 +15,43 @@ module.exports = function(app) {
       }
     }).then(function(useroffers) {
       // console.log("req body skillid", req.body.SkillId);
-      // console.log(useroffers[0].SkillId);
-      // res.json(useroffers);
-      db.Wanted.findAll({
-        where: {
-          SkillId: useroffers[0].SkillId
-
-        }
-      }).then(function(offerwanted){
-        // console.log(offerwanted);
-        res.json(useroffers)
-      })
+      for (var i = 0; i < useroffers.length; i++) {
+        var myCurrentOffer = useroffers[i].SkillId;
+        db.Wanted.findAll({
+          where: {
+            OfferedId: useroffers[i].id
+          }
+        }).then(function(paymentwanted){
+           // console.log(paymentwanted);
+          for (var j = 0; j < paymentwanted.length; j++) {
+            db.Offered.findAll({
+              where: {
+                SkillId: paymentwanted[j].SkillId
+              }
+            }).then(function(paymentfound){
+                  // console.log("payment found!", paymentfound);
+              for (var k = 0; k < paymentfound.length; k++) {
+                db.Wanted.findAll({
+                  where: {
+                    OfferedId: paymentfound[k].id,
+                    SkillId: myCurrentOffer
+                  },
+                  include: [{model: db.User, where:{id: paymentfound[k].UserId}}]
+                }).then(function(matchfound){
+                  // console.log("MATCH FOUND BITCHES", matchfound);
+                  res.json(matchfound);
+                });
+              }
+            });
+          }
+        });
+      }
     });
   });
 
 
 
-//end of module.export
+//end of module.export(app)
 };
 
-//get route - basic example below
-//either will get every offer OR every offer per particular user id
 
-  // app.get("/offers", function(req, res) {
-  //   var query = {};
-  //   if (req.query.author_id) {
-  //     query.AuthorId = req.query.author_id;
-  //   }
-  //   db.Post.findAll({
-  //     where: query
-  //   }).then(function(dbPost) {
-  //     res.json(dbPost);
-  //   });
-  // });
-
-//app.get match - complex matching logic
-//query all other databases from here
-
-//need a destroy for users to remove skills offered
-	//will also delete any skills wanted automatically
