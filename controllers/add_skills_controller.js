@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const body = require("body-parser");
-const db = require(path.join(__dirname,".." ,"models"));
+var db = require(path.join(__dirname,".." ,"models"));
 var offered_skill_id;
 var wanted_skill_ids;
 
@@ -34,6 +34,17 @@ app.post("/offeredskill", function(req, res) {
 	console.log("Offered skill ids is "+offered_skill_id);
 
 
+db.Offered.create({
+
+// NEED TO CREATE A NEW OFFERED SKILL WITH THE ABOVE ID
+SkillId: offered_skill_id,
+UserId: 1234
+
+}).then(function() {
+      console.log("added offered skill");
+    });
+
+
 });
 
 
@@ -50,21 +61,28 @@ app.post("/wantedskills", function(req, res) {
 
 });
 
-db.Offered.create({
+// db.Offered.create({
+// for (var key in wanted_skill_ids) {
 
-// NEED TO CREATE A NEW OFFERED SKILL WITH THE ABOVE ID
+// 	db.Wanted.create({
 
+// skillId: wanted_skill_ids[0],
+// OfferedId: offered_skill_id,
+// UserId: 12345
 
-}).then(function() {
-      res.redirect("/");
-    });
+// }).then(function() {
+//       res.redirect("/");
+//     });
 
-db.Wanted.create({
-// NEED TO CREATE NEW WANTED SKILLS WITH THE ABOVE IDS AND MAKE SURE 
-// THEY MATH THE USER AND THE OFFERED SKILL
-}).then(function() {
-      res.redirect("/");
-    });
-
+// db.Wanted.create({
+// // NEED TO CREATE NEW WANTED SKILLS WITH THE ABOVE IDS AND MAKE SURE 
+// // THEY MATH THE USER AND THE OFFERED SKILL
+// }).then(function() {
+//       res.redirect("/");
+//     });
+// }
 
 };
+   
+
+
