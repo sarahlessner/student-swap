@@ -31,6 +31,8 @@
 
 #display_picture{
   border-radius: 100%;
+  width:250px;
+  height:250px;
 }
 
 /*#user_area{

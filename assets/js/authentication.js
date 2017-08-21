@@ -19,6 +19,8 @@ $(document).ready(function() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       console.log("logged in");
+      $("#user_name").text(localStorage.name);
+      $("#display_picture").attr("src", localStorage.picture);
     } else {
       console.log("not logged in");
       notLoggedIn();
@@ -54,7 +56,10 @@ $(document).ready(function() {
         localStorage.setItem("name", user.displayName);
         localStorage.setItem("picture", user.photoURL);
         localStorage.setItem("guid", user.uid);
-        localStorage.setItem("email", email);
+        localStorage.setItem("email", user.email);
+        console.log(localStorage.name);
+        // $("#user_name").text(localStorage.name);
+        // $("#display_picture").src(localStorage.photoURL);
 
         var userObject = {
           guid : user.uid,
@@ -68,8 +73,9 @@ $(document).ready(function() {
         // access to all the existing users.
         $.post("/user/check", userObject)
           .done(function(data){
-            console.log("adding new user");
+            console.log("checking for user in database");
           })
+
         //If the we can find the user in the json, we send an object back
         //with the new users cred.
 
