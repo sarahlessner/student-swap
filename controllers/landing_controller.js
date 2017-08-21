@@ -29,7 +29,8 @@ app.get("/signin", function(req, res) {
 });
 
 app.get("/homepage", function(req, res) {
-
+  console.log("--------------------");
+  console.log("checking homepage yo yo");
   //displayMatch(1);
 
   // db.User.findOne({
