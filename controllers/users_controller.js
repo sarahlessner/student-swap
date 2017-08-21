@@ -4,38 +4,36 @@ const body = require("body-parser");
 const db = require(path.join(__dirname, "..", "models"));
 
 module.exports = function(app) {
-  console.log("listening for post");
-  //all app.gets, post, etc need to live here
   app.post("/user/check", function(req, res) {
 
     var new_user = req.body;
+    console.log(`guid: ${new_user.guid}`);
 
     db.User.findAll({}).then(data => {
-      data.map(dataValues => {
-        if (dataValues.google_id === new_user.guid) {
-          console.log("exists in database");
-          // var hbsObject = {};
-          // res.render("../views/homepage", hbsObject);
-        } else {
-          console.log("doesn't exist in database");
-          // db.User.create({
-          //     google_id: new_user.guid,
-          //     name: new_user.name,
-          //     email: new_user.email,
-          //     photo: new_user.picture
-          // }).then(result =>{
-          //   console.log("successfully wrote new user to database");
-          // res.render("../views/signin", hbsObject);
+      console.log(data.length);
+      for (var i = 0; i < data.length; i++) {
+        console.log(`this is the ${i} element`);
+        console.log(data[i].dataValues);
+        console.log("--------------------------");
+
+        if (data[i].dataValues.google_id === new_user.guid) {
+          console.log('exists in the database!');
+          // res.redirect("/homepage");
         }
-      });
+        else if (i === data.length - 1 && data[i].dataValues.google_id !==new_user.guid){
+          console.log("this is the last element and the user doesn't exist in the db");
+          db.User.create({
+            google_id: new_user.guid,
+            name: new_user.name,
+            email: new_user.email,
+            photo: new_user.picture
+          }).then(result => {
+            console.log("successfully wrote new user to database");
+            // res.redirect("../views/signin");
+          });
+        }
+      }
+
     });
-
   });
-
 };
-
-//app.get to pass user object to landing controller /homepage route
-
-//may also pass user object for name of match
-
-//app.get

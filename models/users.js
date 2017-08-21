@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     google_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     name: {
@@ -15,13 +15,13 @@ module.exports = function(sequelize, DataTypes) {
     photo: {
       type: DataTypes.STRING,
     },
-     createdAt: { 
-      type: DataTypes.DATE, 
-      defaultValue: sequelize.fn('now') 
+     createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.fn('now')
     },
-    updatedAt: { 
-      type: DataTypes.DATE, 
-      defaultValue: sequelize.fn('now') 
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.fn('now')
     }
   });
 
