@@ -27,10 +27,9 @@ body{
 }
 
 #login_button{
-border: none;
-background: none;
+/*border: none;*/
+/*background: none;*/
 cursor: pointer;
-
 }
 
 #landing-image {

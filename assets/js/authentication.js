@@ -2,7 +2,7 @@
 //it basically gives us access to the users name, email, photo,
 //and unique google id.
 // in addition to that, it also stores this data in local storage
-// and clears it on sign out. 
+// and clears it on sign out.
 
 $(document).ready(function() {
   var config = {
@@ -25,7 +25,7 @@ $(document).ready(function() {
     }
   });
 
-  $("#logoutButton").on("click", function(){
+  $("#logout_button").on("click", function(){
     firebase.auth().signOut().then(function() {
       // Sign-out successful.
       localStorage.removeItem("name");
@@ -38,9 +38,9 @@ $(document).ready(function() {
     });
   })
 
-
   function notLoggedIn() {
-    $("#loginButton").on('click', function() {
+    $("#login_button").on('click', function() {
+
       firebase.auth().signInWithPopup(provider).then(function(result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = result.credential.accessToken;
@@ -50,21 +50,26 @@ $(document).ready(function() {
         email = user.email;
         photo = user.photoURL;
         uid = user.uid;
-        console.log("name: ", name);
-        console.log("email: ", email);
-        console.log("photo: ", photo);
-        console.log("unique id: ", uid);
-        // NOTE: this is where we use the login credentials to append
-        //to the user page.
-        // $('#pic').attr("src", user.photoURL);
-        // $('#userName').text(user.displayName);
+        // console.log(user);
         localStorage.setItem("name", user.displayName);
         localStorage.setItem("picture", user.photoURL);
         localStorage.setItem("guid", user.uid);
         localStorage.setItem("email", email);
+
+        var userObject = {
+          guid : user.uid,
+          name : user.displayName,
+          email: user.email,
+          picture : user.photoURL
+        };
+        console.log(userObject);
         //Checks for user in database
         // NOTE: We'll probably be using a $.get here so that we can get
         // access to all the existing users.
+        $.post("/user/check", userObject)
+          .done(function(data){
+            console.log("adding new user");
+          })
         //If the we can find the user in the json, we send an object back
         //with the new users cred.
 
