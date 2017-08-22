@@ -51,6 +51,19 @@ VALUES
     FROM Skills skill
     WHERE skill.skill_name = 'Color code your closet';
 
+    INSERT INTO Wanteds
+        (skillId, OfferedId, UserId)
+  SELECT 
+    skill.id,
+      (SELECT offer.id
+        FROM Offereds offer
+        WHERE offer.Skillid = '16'),
+      (SELECT user.id
+        FROM Users user
+        WHERE user.name = 'Sarah')
+    FROM Skills skill
+    WHERE skill.skill_name = 'Put birds on things';
+
      INSERT INTO Offereds
       (skillId, UserId)
   SELECT 
@@ -71,5 +84,28 @@ VALUES
       (SELECT user.id
         FROM Users user
         WHERE user.name = 'Tali')
+    FROM Skills skill
+    WHERE skill.skill_name = 'Make you a fake id';
+
+  INSERT INTO Offereds
+      (skillId, UserId)
+  SELECT 
+    skill.id,
+       (SELECT user.id
+          FROM Users user
+          WHERE user.name = 'Ashish')
+    FROM Skills skill
+    WHERE skill.skill_name = 'Put birds on things';
+
+  INSERT INTO Wanteds
+        (skillId, OfferedId, UserId)
+  SELECT 
+    skill.id,
+      (SELECT offer.id
+        FROM Offereds offer
+        WHERE offer.Skillid = '4'),
+      (SELECT user.id
+        FROM Users user
+        WHERE user.name = 'Ashish')
     FROM Skills skill
     WHERE skill.skill_name = 'Make you a fake id';

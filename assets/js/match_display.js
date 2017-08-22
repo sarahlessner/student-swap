@@ -15,30 +15,31 @@ $(document).ready(function() {
 		  //TODO: figure out where UserId param ought to come 
 		  //from the page redirect/data
 		$.get("/homepage/perfectmatch/" + userid, function(data) {
-	      	// console.log("PERFECT MATCH", data);
+	      	console.log("PERFECT MATCH", data);
 	      	for (var i = 0; i < data.length; i++) {
-		      	$("#main_results").append(data[i].User.name+ " is interested in your offer to ");
-		      	$("#main_results").append(data[i].Skill.skill_name);
-		      	$("#main_results").append(" contact her at "+data[i].User.email+" if you're interested her her offer to ");
-		      	
-		      	getSkillOffered(data[i].OfferedId);
-		      	console.log(data[i].OfferedId);
+		      	$("#main_results").append(data[i][0].User.name+ " is interested in your offer to ");
+		      	$("#main_results").append(data[i][0].Skill.skill_name);
+		      	$("#main_results").append(" contact them at "+data[i][0].User.email+" if you're interested in their offer to ");
+		      	$("#main_results").append(data[i][1].skill_name+'<br>');
+		      	//calls to get skill offered data for the offeredId 
+		      	// getSkillOffered(data[i].OfferedId);
+		      	// console.log(data[i].OfferedId);
 	      	}
 	    });
 	    //.then(function(data){
 	    // 	getSkillOffered(data[0].OfferedId);
 	    // });
 	};
-	function getSkillOffered(offerid) {
-					console.log("SKILL OFFER DATA");
+	// function getSkillOffered(offerid) {
+	// 				console.log("SKILL OFFER DATA");
 
-		$.get("/homepage/perfectmatchoffer/" + offerid, function(data) {
-			for (var i = 0; i < data.length; i++) {
-				console.log("SKILL OFFER DATA");
-				$("#main_results").append(data[0].skill_name);
-			}
-		});
-	};
+	// 	$.get("/homepage/perfectmatchoffer/" + offerid, function(data) {
+	// 		for (var i = 0; i < data.length; i++) {
+	// 			console.log("SKILL OFFER DATA");
+	// 			$("#main_results").append(data[i].skill_name);
+	// 		}
+	// 	});
+	// };
 	function displayOfferMatch() {
 		console.log("running displayOfferMatch");
 		var userid = 1;
