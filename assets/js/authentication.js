@@ -19,6 +19,12 @@ $(document).ready(function() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       console.log("logged in");
+      // console.log("location:",window.location.pathname);
+      // console.log("origin:",window.origin);
+      if(window.location.pathname === "/"){
+        // console.log("at landing page");
+        window.location.href = window.location + "homepage";
+      }
       $("#user_name").text(localStorage.name);
       $("#display_picture").attr("src", localStorage.picture);
     } else {
