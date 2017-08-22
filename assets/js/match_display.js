@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 	function displayPerfect() {
 		$("#main_results").empty();
-		$("#main_results").append("<p>"+"Loading Results"+"<p>");
+		$("#main_results").append("<p>"+"calculating perfect matches..."+"<p>");
 		console.log("running displayPerfect");
 		//var userid = localStorage.userid;
 		var userid = 1;
@@ -24,15 +24,17 @@ $(document).ready(function() {
 	      		var email = data[i][0].User.email;
 	      		var $perfectmatch = $('<div>');
 	      		$perfectmatch.css('border', '1px solid black');
+	      		$perfectmatch.css('text-align','left');
 	      		var userimg = $('<img>');
 	      		userimg.attr('src', data[i][0].User.photo);
 	      		userimg.css({width: '50px'});
 	      		$perfectmatch.append(userimg);
-		      	$perfectmatch.append(data[i][0].User.name+ " is interested in your offer to ");
-		      	$perfectmatch.append(data[i][0].Skill.skill_name);
-		      	$perfectmatch.append(" contact them at "+data[i][0].User.email+" if you're interested in their offer to ");
-		      	$perfectmatch.append(data[i][1].skill_name+'<br>');
-		      	$perfectmatch.append('<button>Negotiate<a class="mailto" href="mailto:'+email+'Mail</a></button>');
+		      	$perfectmatch.append(data[i][0].User.name);
+		      	// $perfectmatch.append(" contact them at "+data[i][0].User.email+" if you're interested in their offer to ");
+		      	$perfectmatch.append(" is offering to: "+data[i][1].skill_name);
+		      	$perfectmatch.append(" in exchange for your offer to: "+data[i][0].Skill.skill_name+" ");
+
+		      	$perfectmatch.append('<button>Contact<a class="mailto" href="mailto:'+email+'Mail</a></button>'+'<br>');
 		      	$("#main_results").append($perfectmatch);
 	      	}
 	    });
@@ -40,7 +42,7 @@ $(document).ready(function() {
 
 	function displayOfferMatch() {
 		$("#main_results").empty();
-		$("#main_results").append("<p>"+"Loading Results"+"<p>");
+		$("#main_results").append("<p>"+"brb getting something from the back..."+"<p>");
 		console.log("running displayOfferMatch");
 		var userid = 1;
 		$.get("/homepage/offermatch/" + userid, function(data) {
@@ -51,14 +53,15 @@ $(document).ready(function() {
 	      			var email = data[i][j].User.email;
 	      			var $offermatch = $('<div>');
 		      		$offermatch.css('border', '1px solid black');
+		      		$offermatch.css('text-align','left');
 		      		var userimg = $('<img>');
 		      		userimg.attr('src', data[i][j].User.photo);
 		      		userimg.css({width: '50px'});
 		      		$offermatch.append(userimg);
-		      		$offermatch.append(data[i][j].User.name+ " has got what you want! ");
-		      		$offermatch.append("they're offering to "+data[i][j].Skill.skill_name+"<br>");
+		      		$offermatch.append(data[i][j].User.name);
+		      		$offermatch.append(" is offering to: "+data[i][j].Skill.skill_name+" ");
 		      		// var mailto = $('<button>');
-		   			$offermatch.append('<button>Negotiate<a class="mailto" href="mailto:'+email+'Mail</a></button>');
+		   			$offermatch.append('<button>Contact<a class="mailto" href="mailto:'+email+'Mail</a></button>'+"<br>");
 		   			// console.log(mailto);
 		   			// $offermatch.on("click", "button", function(){
 
