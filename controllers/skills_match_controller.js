@@ -103,7 +103,7 @@ module.exports = function(app) {
       } 
 
     });
-    setTimeout(function(){ res.json(data); }, 1000);
+    setTimeout(function(){ res.json(data); }, 5000);
     
   });
 
