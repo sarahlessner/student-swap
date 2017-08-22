@@ -8,11 +8,12 @@ $(document).ready(function() {
 
 	displayPerfect();
 	// getSkillOffered();
-
+	//get all the users offers and receive their perfect matches back as data
 	function displayPerfect() {
 		$("#main_results").empty();
 		$("#main_results").append("<p>"+"calculating perfect matches..."+"<p>");
 		console.log("running displayPerfect");
+		//TODO: Enable ID from local storage for 'production' 
 		//var userid = localStorage.userid;
 		var userid = 1;
 		  //TODO: figure out where UserId param ought to come 
@@ -69,49 +70,24 @@ $(document).ready(function() {
 		      		$("#main_results").append($offermatch);
 	      		}
 	      	}
-
-
 	    });
 	};
 	function displayOffersBySkill() {
 		console.log("running displayOffersBySkill");
-		var userid = 1;
-		// $.get("/perfectmatch" + userid, function(data) {
-	 //      	console.log("PERFECT MATCH", data);
-	 //    });
+		$("#main_results").empty();
+		$("#main_results").append("<p>"+"loading mad skills..."+"<p>");
+
+		$.get("/alloffersbyskill", function(data) {
+			$("#main_results").empty();
+	      	console.log("All Skills Joined w Offers", data);
+
+	    });
 	};
 
 	$("#perfectmatch").on("click", displayPerfect);
 	$("#offermatch").on("click", displayOfferMatch);
 	$("#offersbyskill").on("click", displayOffersBySkill);
-	// perfectMatchDisplay(1);
-
-	// var perfectMatchDisplay = function(userid){
-	// //	console.log("perfectMatchDisplay running: ", userid);
-	// console.log("match_display loading");
-	// console.log("match_display loading");
-
-	// console.log("match_display loading");
-	// console.log("match_display loading");
-	// console.log("match_display loading");
-	// 	$.get("/homepage/perfectmatch" + userid, function(data) {
-	//       	console.log("PERFECT MATCH", data);
-	//     });
-	// };
-//route for getting all users
-
-//TODO: Have Ashish call perfectMatchDisplay and pass it user id as argument
-/*
-	perfectMatchDisplay(1);
-
-	function perfectMatchDisplay(userid){
-		console.log("perfectMatchDisplay");
-		$.get("/homepage/perfectmatch" + userid function(data) {
-	      	console.log("PERFECT MATCH", data);
-	    });
-	};
-
-*/
+	
 
 
 
