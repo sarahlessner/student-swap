@@ -4,7 +4,7 @@
 <div id="skill_offer_div">
 
 
-<h2>Skill you want to offer (choose one) :</h2>
+<h2 id="skill_title">Skill you want to offer (choose one) :</h2>
 
 <form>
 
@@ -15,14 +15,23 @@
   {{/each}}
   </select>
 </div>
-<hr>
-<div id="skill_wanted_div">
-  <h2>Skills you need (chose as many as you like) :</h2>
-  {{#each skills}}
-    <input type="checkbox" id="{{this.dataValues.id}}" value="{{this.dataValues.skill_name}}">{{this.dataValues.skill_name}}<br>
-  {{/each}}
+{{!-- <hr> --}}
+<div class="row">
+  <div id="skill_wanted_div" class="">
+    <h2>Skills you need (chose as many as you like) :</h2>
+    <div class="">
+      {{#each skills}}
+      <div class="skills_existing">
+        <p class="">{{this.dataValues.skill_name}}</p>
+          <input class="input_box" type="checkbox" id="{{this.dataValues.id}}" value="{{this.dataValues.skill_name}}"><br>
+      </div>
+      {{/each}}
+    </div>
+  </div>
 
-  <button type="submit" id="signin">Head to my homepage</button>
+<div class="">
+    <button type="submit" id="signin">Head to my homepage</button>
+</div>
 </div>
 
 
