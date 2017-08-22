@@ -153,6 +153,31 @@ module.exports = function(app) {
     setTimeout(function(){ res.json(offerMatchArr); }, 5000);    });
   });
 
+  app.get("/alloffersbyskill", function(req, res){
+    offersBySkillArr = [];
+    db.Skill.findAll({})
+    .then(function(allskills){
+      // console.log(allskills);
+      // res.json(allskills);
+        allskills.forEach(function(skill){
+          // console.log(skill);
+          offerArr = [];
+          db.Offered.findAll({
+            where: {
+              SkillId: skill.id
+            },
+            include: [{model: db.User}, {model: db.Skill}]
+          }).then(function(offeringskill){
+            console.log("offering", offeringskill);
+            offersBySkillArr.push(offeringskill);
+
+          });
+        });
+    });
+        setTimeout(function(){ res.json(offersBySkillArr); }, 5000);
+
+  });
+
 //end of module.export(app)
 };
 
