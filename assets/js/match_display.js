@@ -80,6 +80,22 @@ $(document).ready(function() {
 		$.get("/alloffersbyskill", function(data) {
 			$("#main_results").empty();
 	      	console.log("All Skills Joined w Offers", data);
+	      	//create a button for each skill
+	      	for (var i = 0; i < data.length; i++) {
+	      		var $skills = $('<div>');
+	      		if (data[i][0]) {
+	      			$skills.append($('<button>'+data[i][0].Skill.skill_name+'</button>'+'<br>'));
+	      			for (var j = 0; j < data[i].length; j++) {
+		      			var userimg = $('<img>');
+			      		userimg.attr('src', data[i][j].User.photo);
+			      		userimg.css({width: '50px'});
+		      			$skills.append(userimg);
+		      			$skills.append(data[i][j].User.name);
+		      		}
+		      		$("#main_results").append($skills);
+		      	}
+	      		
+	      	}
 
 	    });
 	};

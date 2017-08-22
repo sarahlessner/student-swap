@@ -161,6 +161,7 @@ module.exports = function(app) {
       // res.json(allskills);
         allskills.forEach(function(skill){
           // console.log(skill);
+
           offerArr = [];
           db.Offered.findAll({
             where: {
@@ -169,6 +170,7 @@ module.exports = function(app) {
             include: [{model: db.User}, {model: db.Skill}]
           }).then(function(offeringskill){
             console.log("offering", offeringskill);
+            
             offersBySkillArr.push(offeringskill);
 
           });
