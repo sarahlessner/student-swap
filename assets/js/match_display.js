@@ -10,6 +10,8 @@ $(document).ready(function() {
 	// getSkillOffered();
 
 	function displayPerfect() {
+		$("#main_results").empty();
+		// $("#main_results").append("<p>"+"Loading Results"+"<p>");
 		console.log("running displayPerfect");
 		var userid = 1;
 		  //TODO: figure out where UserId param ought to come 
@@ -25,6 +27,8 @@ $(document).ready(function() {
 		      	// getSkillOffered(data[i].OfferedId);
 		      	// console.log(data[i].OfferedId);
 	      	}
+	      	data = [];
+	      	
 	    });
 	    //.then(function(data){
 	    // 	getSkillOffered(data[0].OfferedId);

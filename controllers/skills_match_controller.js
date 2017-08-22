@@ -4,9 +4,13 @@ const body = require("body-parser");
 const db = require(path.join(__dirname,".." ,"models"));
 
 module.exports = function(app) {
+  var countdown;// = 100;
+  var running;// = true;
+  resetTimer();
 
   app.get("/homepage/perfectmatch/:UserId", function(req, res) {
     var data = [];
+    resetTimer();
 
     // console.log(req);
     db.Offered.findAll({
@@ -15,6 +19,7 @@ module.exports = function(app) {
       }
     }).then(function(useroffers) {
       // console.log("req body skillid", req.body.SkillId);
+      resetTimer();
 
       console.log("#i: " + useroffers.length);
       for (var i = 0; i < useroffers.length; i++) {
@@ -27,6 +32,8 @@ module.exports = function(app) {
           }
         }).then(function(paymentwanted){
 
+          resetTimer();
+
            // console.log("payment wanted"+i, paymentwanted);
           console.log("#j: " + paymentwanted.length);
           for (var j = 0; j < paymentwanted.length; j++) {
@@ -37,6 +44,8 @@ module.exports = function(app) {
                 SkillId: paymentwanted[j].SkillId
               }
             }).then(function(paymentfound){
+
+              resetTimer();
 
                   // console.log("payment found!", paymentfound);
               console.log("#k: " + paymentfound.length);
@@ -61,6 +70,8 @@ module.exports = function(app) {
                   }]
                 }).then(function(matchfound){
 
+                  resetTimer();
+
                   //console.log("MATCH FOUND BITCHES", matchfound);
                   // data.push(matchfound);
 
@@ -76,12 +87,18 @@ module.exports = function(app) {
                         id: matchfound[l].OfferedId
                       }
                     }).then(function(offermatchfound) {
+
+                      resetTimer();
+
                       //console.log(offermatchfound);
                         db.Skill.findOne({
                           where: {
                             id: offermatchfound.SkillId
                           }
                         }).then(function(finalobjectfound){
+
+                          resetTimer();
+
                           matchData.push(finalobjectfound);
                           data.push(matchData);
                           
@@ -103,9 +120,26 @@ module.exports = function(app) {
       } 
 
     });
-    setTimeout(function(){ res.json(data); }, 5000);
-    
+    //setTimeout(function(){ res.json(data); }, 5000);
+    setInterval(function() {
+      if (!running)
+        return;
+      countdown -= 1;
+      if(countdown % 10 === 0)
+        console.log(countdown);
+      if(countdown <= 0) {
+        res.json(data);
+        running = false;
+
+      }
+    }, 10);
   });
+
+
+  function resetTimer() {
+    countdown = 100;
+    running = true;
+  };
 
   // app.get("/homepage/perfectmatchoffer/:OfferedId", function(req, res) {
   //   // console.log("get route is happening");
