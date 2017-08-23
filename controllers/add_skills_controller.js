@@ -2,87 +2,72 @@ const express = require("express");
 const path = require("path");
 const body = require("body-parser");
 var db = require(path.join(__dirname,".." ,"models"));
-var offered_skill_id;
+var SAVED_OFFER_ID;
 var wanted_skill_ids;
 
 module.exports = function(app) {
-  //all app.gets, post, etc need to live here
 
-app.get("/signin", function(req, res) {
+  app.get("/signin", function(req, res) {
+
+    db.Skill.findAll ({}).then(function(data) {
+
+      var allskills = {
+        skills: data
+      };
+      res.render("../views/signin", allskills);
+
+    });
+  });
 
 
-  db.Skill.findAll ({}).then(function(data) {
+  app.post("/newexchange", function(req, res) {
+      	
+    var temp = req.body.offereds.offer;
+    offered_skill_id = temp;
+    console.log("Offered skill ids is "+temp);
+    
+    db.Offered.create({
+    SkillId: parseInt(temp),
+    UserId: parseInt(req.body.offereds.userid)
 
-    var allskills = {
-      skills: data
-    };
+    }).then(function(offerskill) {
+    // INSERT THE 2ND THINGY THAT CREATED THE WANTEDS
+    console.log("added offered skill", offerskill);
+    SAVED_OFFER_ID = offerskill.dataValues.id;
+    console.log("WE CAPTURED THE ID OMG " + SAVED_OFFER_ID);
 
-    res.render("../views/signin", allskills);
 
+    var temp2 = req.body.wanteds.wantedskills;
+    console.log("HEY HEY HEY "+SAVED_OFFER_ID);
+    console.log("wanted skill ids are " + temp2);
+    
+    for (i=0; i<temp2.length; i++) { 
+    db.Wanted.create({
 
+  // SkillId: temp[i],
+  // OfferedId: offered_skill_id,
+  // UserId: offered_skill_id
+
+  OfferedId: SAVED_OFFER_ID,
+  UserId: req.body.wanteds.userid,
+  SkillId: temp2[i]
+
+  }).then(function() {
+        // res.redirect("/");
+
+        console.log("added wanted skills");
       });
-});
 
-
-
-app.post("/offeredskill", function(req, res) {
-    	
-    	var temp = req.body;
-
-    	offered_skill_id = (Object.keys(temp)[0]);
-
-	console.log("Offered skill ids is "+offered_skill_id);
-
-
-db.Offered.create({
-
-// NEED TO CREATE A NEW OFFERED SKILL WITH THE ABOVE ID
-SkillId: offered_skill_id,
-UserId: 1234
-
-}).then(function() {
-      console.log("added offered skill");
+     }
+     res.send({direction:"homepage"});
     });
 
 
-});
 
 
+  });
 
-app.post("/wantedskills", function(req, res) {
 
+}
 
-    console.log(req.body);
-	var temp = req.body;
-
-	wanted_skill_ids = Object.values(temp);
-
-	console.log("wanted skills ids are "+wanted_skill_ids);
-
-});
-
-// db.Offered.create({
-// for (var key in wanted_skill_ids) {
-
-// 	db.Wanted.create({
-
-// skillId: wanted_skill_ids[0],
-// OfferedId: offered_skill_id,
-// UserId: 12345
-
-// }).then(function() {
-//       res.redirect("/");
-//     });
-
-// db.Wanted.create({
-// // NEED TO CREATE NEW WANTED SKILLS WITH THE ABOVE IDS AND MAKE SURE 
-// // THEY MATH THE USER AND THE OFFERED SKILL
-// }).then(function() {
-//       res.redirect("/");
-//     });
-// }
-
-};
    
-
-
