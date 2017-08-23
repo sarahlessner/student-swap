@@ -12,7 +12,7 @@ module.exports = function(app) {
       where:{
         google_id: new_user.guid
       }
-    }).then(data => {
+    }).then(data =>  {
       if(data === null){
         db.User.create({
           google_id: new_user.guid,
