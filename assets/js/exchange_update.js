@@ -44,8 +44,9 @@ $(document).ready(function() {
 		});
 	};
 
-//by adding the click event to the document, we don't have to worry about
-// the click event getting messed up.(I have no clue why, haha!)
+//by adding the click event to the document and making
+//sure it's outside the for loop we don't have to worry about
+// the click event getting messed up
 	$(document).on("click", '.offerbtn', function(){
 		// $(".wanted-list").toggle();
 		// NOTE: this is how we selected the ul list:
