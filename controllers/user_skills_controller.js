@@ -6,11 +6,11 @@ const db = require(path.join(__dirname,".." ,"models"));
 
 module.exports = function(app) {
   //all app.gets, post, etc need to live here
-  app.get("/update-skills", function(req,res){
-    var dummyObject = {};
-
-    res.render("../views/updateSkills", dummyObject);
-  })
+  // app.get("/update-skills", function(req,res){
+  //   var dummyObject = {};
+  //
+  //   res.render("../views/updateSkills", dummyObject);
+  // });
 
 };
 
