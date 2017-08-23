@@ -27,10 +27,10 @@ VALUES
     ("012344", "Sarah", "sarah@sarah.com", "sarahsphoto.com"),
     ("012345", "Ashish", "ashish@ashish.com", "ashishsphoto.com"),
     ("012346", "Tali", "tali@tali.com", "talisphoto.com");
-  
+
   INSERT INTO Offereds
       (skillId, UserId)
-  SELECT 
+  SELECT
     skill.id,
        (SELECT user.id
           FROM Users user
@@ -40,7 +40,7 @@ VALUES
 
   INSERT INTO Wanteds
         (skillId, OfferedId, UserId)
-  SELECT 
+  SELECT
     skill.id,
       (SELECT offer.id
         FROM Offereds offer
@@ -50,11 +50,11 @@ VALUES
         WHERE user.name = 'Tali')
     FROM Skills skill
     WHERE skill.skill_name = 'Make you a fake id';
-    
-    
+
+
     INSERT INTO Wanteds
         (skillId, OfferedId, UserId)
-  SELECT 
+  SELECT
     skill.id,
       (SELECT offer.id
         FROM Offereds offer
@@ -64,10 +64,10 @@ VALUES
         WHERE user.name = 'Sarah')
     FROM Skills skill
     WHERE skill.skill_name = 'Put birds on things';
-    
+
      INSERT INTO Wanteds
         (skillId, OfferedId, UserId)
-  SELECT 
+  SELECT
     skill.id,
       (SELECT offer.id
         FROM Offereds offer
@@ -80,17 +80,17 @@ VALUES
 
 INSERT INTO Offereds
       (skillId, UserId)
-  SELECT 
+  SELECT
     skill.id,
        (SELECT user.id
           FROM Users user
           WHERE user.name = 'Ashish')
     FROM Skills skill
     WHERE skill.skill_name = 'Put birds on things';
-    
+
 INSERT INTO Offereds
       (skillId, UserId)
-  SELECT 
+  SELECT
     skill.id,
        (SELECT user.id
           FROM Users user
@@ -100,7 +100,7 @@ INSERT INTO Offereds
 
   INSERT INTO Wanteds
         (skillId, OfferedId, UserId)
-  SELECT 
+  SELECT
     skill.id,
       (SELECT offer.id
         FROM Offereds offer
@@ -110,10 +110,10 @@ INSERT INTO Offereds
         WHERE user.name = 'Ashish')
     FROM Skills skill
     WHERE skill.skill_name = 'Make you a fake id';
-    
+
     INSERT INTO Wanteds
         (skillId, OfferedId, UserId)
-  SELECT 
+  SELECT
     skill.id,
       (SELECT offer.id
         FROM Offereds offer
@@ -123,20 +123,20 @@ INSERT INTO Offereds
         WHERE user.name = 'Ashish')
     FROM Skills skill
     WHERE skill.skill_name = 'Do your math homework';
-    
+
     INSERT INTO Offereds
       (skillId, UserId)
-  SELECT 
+  SELECT
     skill.id,
        (SELECT user.id
           FROM Users user
           WHERE user.name = 'Tali')
     FROM Skills skill
     WHERE skill.skill_name = 'Put birds on things';
-    
+
     INSERT INTO Wanteds
         (skillId, OfferedId, UserId)
-  SELECT 
+  SELECT
     skill.id,
       (SELECT offer.id
         FROM Offereds offer
@@ -146,4 +146,3 @@ INSERT INTO Offereds
         WHERE user.name = 'Tali')
     FROM Skills skill
     WHERE skill.skill_name = 'Social Media Manager';
-    

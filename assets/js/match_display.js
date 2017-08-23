@@ -26,20 +26,23 @@ $(document).ready(function() {
       			if (data[i][0].User.id != localStorage.userid) {
 
 		      		var email = data[i][0].User.email;
-		      		var $perfectmatch = $('<div>');
-		      		$perfectmatch.css('border', '1px solid black');
-		      		$perfectmatch.css('text-align','left');
-		      		var userimg = $('<img>');
-		      		userimg.attr('src', data[i][0].User.photo);
-		      		userimg.css({width: '50px'});
-		      		$perfectmatch.append(userimg);
-			      	$perfectmatch.append(data[i][0].User.name);
-			      	// $perfectmatch.append(" contact them at "+data[i][0].User.email+" if you're interested in their offer to ");
-			      	$perfectmatch.append(" is offering to: "+data[i][1].skill_name);
-			      	$perfectmatch.append(" in exchange for your offer to: "+data[i][0].Skill.skill_name+" ");
+							var perfect_match_html ='<div class="row perfect_matches">'+
+																			'<div class="col-md-4 user_deets">' +
+																			' <h3>' + data[i][0].User.name + '</h3>' +
+																			'<img class="user_photos" src="'+
+																			 data[i][0].User.photo+'"/>' +
+																			'</div>' +
+																			'<div class="col-md-6 offer_n_exchange">' +
+																			'<h3> Offer: </h3>' +
+																			'<h4>'+ data[i][1].skill_name +'</h4>' +
+																			'<h3>Exchange: </h3>' +
+																			'<h4>'+ data[i][0].Skill.skill_name +'</h4>' +
+																			'</div>' +
+																			'<div class="col-md-2">' +
+																			'<button class="match_buttons">Contact<a class="mailto" href="mailto:'+email+'Mail</a></button>'+
+																			'</div>';
 
-			      	$perfectmatch.append('<button>Contact<a class="mailto" href="mailto:'+email+'Mail</a></button>'+'<br>');
-			      	$("#main_results").append($perfectmatch);
+			      	$("#main_results").append(perfect_match_html);
 			    }
 	      	}
 	    });
@@ -60,22 +63,24 @@ $(document).ready(function() {
       				if (data[i][j].User.id != localStorage.userid) {
 
 		      			var email = data[i][j].User.email;
-		      			var $offermatch = $('<div>');
-			      		$offermatch.css('border', '1px solid black');
-			      		$offermatch.css('text-align','left');
-			      		var userimg = $('<img>');
-			      		userimg.attr('src', data[i][j].User.photo);
-			      		userimg.css({width: '50px'});
-			      		$offermatch.append(userimg);
-			      		$offermatch.append(data[i][j].User.name);
-			      		$offermatch.append(" is offering to: "+data[i][j].Skill.skill_name+" ");
-			      		// var mailto = $('<button>');
-			   			$offermatch.append('<button>Contact<a class="mailto" href="mailto:'+email+'Mail</a></button>'+"<br>");
-			   			// console.log(mailto);
-			   			// $offermatch.on("click", "button", function(){
+								var offer_match_html = '<div class="row offer_matches">' +
+																				'<div class="col-md-2 user_deets">' +
+																				'<h3>'+data[i][j].User.name+'</h3>' +
+																				'<img class="offer_photos" src="'+data[i][j].User.photo+'">' +
+																				'</div>' +
+																				'<div class="col-md-8 offer_element">' +
+																				'<div class="offer_text">'+
+																				'<h3> Offer: </h3> '+
+																				'<h4>' + data[i][j].Skill.skill_name + '</h4>'+
+																				'</div>' +
+																				'</div>' +
+																				'<div class="col-md-2 offer_element">' +
+																				// '<br><br>' +
+																				'<button class="offer_buttons">Contact<a class="mailto" href="mailto:'+email+'Mail</a></button>'+
+																				'</div>' +
+																				'</div>';
 
-			   			// })
-			      		$("#main_results").append($offermatch);
+			      		$("#main_results").append(offer_match_html);
 			      	}
 	      		}
 	      	}
@@ -94,20 +99,22 @@ $(document).ready(function() {
 	      	//create a button for each skill
 	      	for (var i = 0; i < data.length; i++) {
 	      		console.log("data", data[i]);
-	      		var $skills = $('<div>');
-	      		
-      			$skills.append($('<button>'+data[i][0].Skill.skill_name+'</button>'+'<br>'));
+	      		var $skills = $('<div class="all_skills"></div>');
+
+      			$skills.append($('<h3>'+ data[i][0].Skill.skill_name +'</h3>'));
       			for (var j = 0; j < data[i].length; j++) {
       				if (data[i][j].User.id != localStorage.userid) {
-		      			var userimg = $('<img>');
-			      		userimg.attr('src', data[i][j].User.photo);
-			      		userimg.css({width: '50px'});
-		      			$skills.append(userimg);
-		      			$skills.append(data[i][j].User.name+"<br>");
-		      		} 
+								var user_html =	'<div class="all_users">' +
+																'<h4>'+ data[i][j].User.name +'</h4>' +
+																'<img class="all_users_pics" src="'+data[i][j].User.photo+'"/>' +
+																'<button class="all_users_buttons">Contact<a class="mailto" href="mailto:'+'email'+'Mail</a></button>'+
+																'</div>';
+
+								$skills.append(user_html);
+		      		}
 	      		}
 	      		$("#main_results").append($skills);
-		      	
+
 
 	      	}
 
