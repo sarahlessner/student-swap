@@ -4,4 +4,5 @@ module.exports = function(app) {
 	require('./user_skills_controller.js')(app);
 	require('./add_skills_controller.js')(app);
 	require('./users_controller.js')(app);
+	require('./update_skills_controller.js')(app);
 };
