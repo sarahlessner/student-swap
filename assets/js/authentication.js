@@ -65,6 +65,7 @@ $(document).ready(function() {
         localStorage.setItem("picture", user.photoURL);
         localStorage.setItem("guid", user.uid);
         localStorage.setItem("email", user.email);
+
         console.log(localStorage.name);
         // $("#user_name").text(localStorage.name);
         // $("#display_picture").src(localStorage.photoURL);
@@ -80,13 +81,15 @@ $(document).ready(function() {
         // NOTE: We'll probably be using a $.get here so that we can get
         // access to all the existing users.
         $.post("/user/check", userObject)
-          .done(function(data){
+        .done(function(data){
             // console.log(data);
             localStorage.setItem("userid",data.user_data.id);
+            console.log(localStorage.userid);
             var destination = data.redirect;
             window.location.href = window.location + destination;
             console.log(localStorage.userid);
-          })
+            console.log("hello");
+          });
 
         //If the we can find the user in the json, we send an object back
         //with the new users cred.

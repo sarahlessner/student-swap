@@ -71,3 +71,14 @@
   padding:10px;
   margin-top:10px;
 }
+
+.da_tabs{
+  border:none;
+  background-color: #529cc4;
+  padding:10px;
+  border-radius: 10px;
+}
+
+a{
+  color:white;
+}
