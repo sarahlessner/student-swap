@@ -7,7 +7,6 @@ module.exports = function(app) {
 
   app.get("/homepage/perfectmatch/:UserId", function(req, res) {
     var data = [];
-
     // console.log(req);
     //look up the current users offers
     db.Offered.findAll({
@@ -111,7 +110,7 @@ module.exports = function(app) {
     //sending data on a short delay to ensure queries all run
     //TODO: THIS PROMISE.ALL() STUFF MAKES ME WANT TO DIE PLEASE SEND HELP
     //I know it's the better solution sorry about it
-    setTimeout(function(){ res.json(data); }, 5000);  
+    setTimeout(function(){ res.json(data); }, 2000);  
   });
 
   //function for offer match - find people offering what you want
@@ -126,57 +125,49 @@ module.exports = function(app) {
       }
     }).then(function(wanted){
       //find out who is offering what I want
-        wanted.forEach(function(skillwanted) {
-          var skillWantedArr = [];
-        console.log("skillwanted", skillwanted);
-          db.Offered.findAll({
+      Promise.all(wanted.map(function(skillwanted) {
+        return db.Offered.findAll({
+          where: {
+          SkillId: skillwanted.SkillId
+          },
+          include: [{
+            model: db.User
+          },
+          {
+            model: db.Skill,
             where: {
-            SkillId: skillwanted.SkillId
-            },
-            include: [{
-              model: db.User
-            },
-            {
-              model: db.Skill,
-              where: {
-                id: skillwanted.SkillId
-            }
-            }]
-          }).then(function(offermatch){
-            offermatch.forEach(function(offer){
-              skillWantedArr.push(offer);
-            })
-            offerMatchArr.push(skillWantedArr);
-
-          });
+              id: skillwanted.SkillId
+          }
+          }]
+        });
+      })).then(function(values){
+          res.json(values);
       });
-    setTimeout(function(){ res.json(offerMatchArr); }, 5000);    });
+    });
+    // setTimeout(function(){ res.json(offerMatchArr); }, 5000);    });
   });
 
   app.get("/alloffersbyskill", function(req, res){
-    offersBySkillArr = [];
+    // offersBySkillArr = [];
     db.Skill.findAll({})
     .then(function(allskills){
       // console.log(allskills);
       // res.json(allskills);
-        allskills.forEach(function(skill){
-          // console.log(skill);
 
-          offerArr = [];
-          db.Offered.findAll({
-            where: {
-              SkillId: skill.id
-            },
-            include: [{model: db.User}, {model: db.Skill}]
-          }).then(function(offeringskill){
-            console.log("offering", offeringskill);
-            
-            offersBySkillArr.push(offeringskill);
+      var getskills = Promise.all(allskills.map(skill =>
+        db.Offered.findAll({
+          where: {
+            SkillId: skill.id
+          },
+          include: [{model: db.User}, {model: db.Skill}]
+        })
+      )).then(values => {
+        res.json(values.filter(value => !!value.length))
+      });
+      // console.log('temp', temp);
 
-          });
-        });
     });
-        setTimeout(function(){ res.json(offersBySkillArr); }, 5000);
+        // setTimeout(function(){ res.json(offersBySkillArr); }, 5000);
 
   });
 

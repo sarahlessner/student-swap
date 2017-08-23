@@ -49,12 +49,12 @@ app.get("/homepage", function(req, res) {
   res.render("../views/homepage", hbsObject);
 });
 
-app.get("/update-skills",function(req,res){
-  var hbsObject = {
-    results: "dbUser"
-  }
-  res.render("../views/updateSkills", hbsObject);
-})
+// app.get("/update-skills",function(req,res){
+//   var hbsObject = {
+//     results: "dbUser"
+//   }
+//   res.render("../views/updateSkills", hbsObject);
+// })
 
 
 //actual user info from db will populate name
