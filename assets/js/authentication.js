@@ -86,7 +86,7 @@ $(document).ready(function() {
             localStorage.setItem("userid",data.user_data.id);
             console.log(localStorage.userid);
             var destination = data.redirect;
-            window.location.href = window.location + destination;
+            window.location.href = window.origin + destination;
             console.log(localStorage.userid);
             console.log("hello");
           });
