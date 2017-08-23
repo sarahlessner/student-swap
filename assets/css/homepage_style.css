@@ -77,8 +77,124 @@
   background-color: #529cc4;
   padding:10px;
   border-radius: 10px;
+  float: left;
+  margin:10px;
+}
+
+.match_buttons{
+  width:100%;
+  padding-top:10px;
+  padding-bottom:10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-size:20px;
+  border:none;
+  background-color:  #529cc4;
 }
 
 a{
   color:white;
+}
+
+.perfect_matches{
+  text-align: center;
+  background-color: #4e638a;
+  margin:10px;
+  border-radius: 10px;
+  color:white;
+}
+.user_photos{
+  width:100px;
+  border-radius: 100%;
+  margin-bottom: 10px;
+}
+
+.user_deets{
+  text-align: center;
+  color:white;
+  margin-bottom: 10px;
+}
+
+.offer_n_exchange{
+  text-align: center;
+}
+
+.offer_matches{
+  text-align: left;
+  margin:10px;
+  background-color: #4e638a;
+  border-radius: 10px;
+}
+
+.offer_photos{
+  width:50px;
+  border-radius: 100%;
+}
+
+/*.offer_element{
+  display: inline-block;
+}*/
+
+.offer_text{
+  color:white;
+  /*font-size: 15px;*/
+  text-align: center;
+  margin-top:2%;
+}
+.offer_buttons{
+  border:none;
+  color:white;
+  background-color: #529cc4;
+  padding:10px;
+  width:100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.all_skills{
+  background-color: #4e638a;
+  margin:10px;
+  color:white;
+  padding-top:1px;
+  border-radius: 10px;
+}
+
+.all_users{
+  display: inline-block;
+  /*border:1px solid black;*/
+  border-radius: 10px;
+  padding:10px;
+  margin:10px;
+  background-color: #529cc4;
+}
+.all_users_pics{
+  width:50px;
+  border-radius: 100%;
+}
+
+.all_users_buttons{
+  border: none;
+  background-color: #7abce0;
+  padding:10px;
+  border-radius: 10px;
+  display: block;
+  float:left;
+  float: right;
+  margin: 10px;
+  /*border: 1px solid #4e638a;*/
+  color:#2b4471;
+  font-weight: bold;
+}
+
+.all_users_names{
+  margin-top: 10px;
+}
+
+@media (min-width:992px){
+  .match_buttons{
+    margin-top: 65px;
+  }
+  .offer_buttons{
+    margin-top: 35px;
+  }
 }

@@ -21,10 +21,10 @@ $(document).ready(function() {
       console.log("logged in");
       //NOTE:-the redirect causes us to lose th user id in local storage
 
-      if(window.location.pathname === "/"){
-        // console.log("at landing page");
-        window.location.href = window.location + "homepage";
-      }
+      // if(window.location.pathname === "/"){
+      //   // console.log("at landing page");
+      //   window.location.href = window.location + "homepage";
+      // }
       $("#user_name").text(localStorage.name);
       $("#display_picture").attr("src", localStorage.picture);
     } else {
