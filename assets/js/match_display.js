@@ -23,21 +23,24 @@ $(document).ready(function() {
 			$("#main_results").empty();
 	      	console.log("PERFECT MATCH", data);
 	      	for (var i = 0; i < data.length; i++) {
-	      		var email = data[i][0].User.email;
-	      		var $perfectmatch = $('<div>');
-	      		$perfectmatch.css('border', '1px solid black');
-	      		$perfectmatch.css('text-align','left');
-	      		var userimg = $('<img>');
-	      		userimg.attr('src', data[i][0].User.photo);
-	      		userimg.css({width: '50px'});
-	      		$perfectmatch.append(userimg);
-		      	$perfectmatch.append(data[i][0].User.name);
-		      	// $perfectmatch.append(" contact them at "+data[i][0].User.email+" if you're interested in their offer to ");
-		      	$perfectmatch.append(" is offering to: "+data[i][1].skill_name);
-		      	$perfectmatch.append(" in exchange for your offer to: "+data[i][0].Skill.skill_name+" ");
+      			if (data[i][0].User.id != localStorage.userid) {
 
-		      	$perfectmatch.append('<button>Contact<a class="mailto" href="mailto:'+email+'Mail</a></button>'+'<br>');
-		      	$("#main_results").append($perfectmatch);
+		      		var email = data[i][0].User.email;
+		      		var $perfectmatch = $('<div>');
+		      		$perfectmatch.css('border', '1px solid black');
+		      		$perfectmatch.css('text-align','left');
+		      		var userimg = $('<img>');
+		      		userimg.attr('src', data[i][0].User.photo);
+		      		userimg.css({width: '50px'});
+		      		$perfectmatch.append(userimg);
+			      	$perfectmatch.append(data[i][0].User.name);
+			      	// $perfectmatch.append(" contact them at "+data[i][0].User.email+" if you're interested in their offer to ");
+			      	$perfectmatch.append(" is offering to: "+data[i][1].skill_name);
+			      	$perfectmatch.append(" in exchange for your offer to: "+data[i][0].Skill.skill_name+" ");
+
+			      	$perfectmatch.append('<button>Contact<a class="mailto" href="mailto:'+email+'Mail</a></button>'+'<br>');
+			      	$("#main_results").append($perfectmatch);
+			    }
 	      	}
 	    });
 	};
@@ -54,23 +57,26 @@ $(document).ready(function() {
 	      	// console.log("OK Match", data);
 	      	for (var i = 0; i < data.length; i++) {
 	      		for (var j = 0; j < data[i].length; j++) {
-	      			var email = data[i][j].User.email;
-	      			var $offermatch = $('<div>');
-		      		$offermatch.css('border', '1px solid black');
-		      		$offermatch.css('text-align','left');
-		      		var userimg = $('<img>');
-		      		userimg.attr('src', data[i][j].User.photo);
-		      		userimg.css({width: '50px'});
-		      		$offermatch.append(userimg);
-		      		$offermatch.append(data[i][j].User.name);
-		      		$offermatch.append(" is offering to: "+data[i][j].Skill.skill_name+" ");
-		      		// var mailto = $('<button>');
-		   			$offermatch.append('<button>Contact<a class="mailto" href="mailto:'+email+'Mail</a></button>'+"<br>");
-		   			// console.log(mailto);
-		   			// $offermatch.on("click", "button", function(){
+      				if (data[i][j].User.id != localStorage.userid) {
 
-		   			// })
-		      		$("#main_results").append($offermatch);
+		      			var email = data[i][j].User.email;
+		      			var $offermatch = $('<div>');
+			      		$offermatch.css('border', '1px solid black');
+			      		$offermatch.css('text-align','left');
+			      		var userimg = $('<img>');
+			      		userimg.attr('src', data[i][j].User.photo);
+			      		userimg.css({width: '50px'});
+			      		$offermatch.append(userimg);
+			      		$offermatch.append(data[i][j].User.name);
+			      		$offermatch.append(" is offering to: "+data[i][j].Skill.skill_name+" ");
+			      		// var mailto = $('<button>');
+			   			$offermatch.append('<button>Contact<a class="mailto" href="mailto:'+email+'Mail</a></button>'+"<br>");
+			   			// console.log(mailto);
+			   			// $offermatch.on("click", "button", function(){
+
+			   			// })
+			      		$("#main_results").append($offermatch);
+			      	}
 	      		}
 	      	}
 	    });
