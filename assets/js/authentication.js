@@ -19,12 +19,13 @@ $(document).ready(function() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       console.log("logged in");
+      //NOTE:-the redirect causes us to lose th user id in local storage
       // console.log("location:",window.location.pathname);
       // console.log("origin:",window.origin);
-      if(window.location.pathname === "/"){
-        // console.log("at landing page");
-        window.location.href = window.location + "homepage";
-      }
+      // if(window.location.pathname === "/"){
+      //   // console.log("at landing page");
+      //   window.location.href = window.location + "homepage";
+      // }
       $("#user_name").text(localStorage.name);
       $("#display_picture").attr("src", localStorage.picture);
     } else {
@@ -86,7 +87,7 @@ $(document).ready(function() {
             localStorage.setItem("userid",data.user_data.id);
             console.log(localStorage.userid);
             var destination = data.redirect;
-            window.location.href = window.origin + destination;
+            window.location.href = window.location + destination;
             console.log(localStorage.userid);
             console.log("hello");
           });
