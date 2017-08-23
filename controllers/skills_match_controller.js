@@ -155,7 +155,7 @@ module.exports = function(app) {
       // res.json(allskills);
 
       var getskills = Promise.all(allskills.map(skill =>
-        db.Offered.findeAll({
+        db.Offered.findAll({
           where: {
             SkillId: skill.id
           },
