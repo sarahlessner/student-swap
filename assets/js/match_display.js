@@ -10,13 +10,15 @@ $(document).ready(function() {
 	// getSkillOffered();
 	//get all the users offers and receive their perfect matches back as data
 	function displayPerfect() {
+		// $(".da_tabs").removeClass("active");
+		// $(this).addClass("active");
 		$("#main_results").empty();
 		$("#main_results").append("<p>"+"calculating perfect matches..."+"<p>");
 		console.log("running displayPerfect");
-		//TODO: Enable ID from local storage for 'production' 
-		//var userid = localStorage.userid;
-		var userid = 1;
-		  //TODO: figure out where UserId param ought to come 
+		//TODO: Enable ID from local storage for 'production'
+		var userid = localStorage.userid;
+		// var userid = 1;
+		  //TODO: figure out where UserId param ought to come
 		  //from the page redirect/data
 		$.get("/homepage/perfectmatch/" + userid, function(data) {
 			$("#main_results").empty();
@@ -42,6 +44,8 @@ $(document).ready(function() {
 	};
 
 	function displayOfferMatch() {
+		// $(".da_tabs").removeClass("active");
+		// $(this).addClass("active");
 		$("#main_results").empty();
 		$("#main_results").append("<p>"+"brb getting something from the back..."+"<p>");
 		console.log("running displayOfferMatch");
@@ -74,6 +78,8 @@ $(document).ready(function() {
 	};
 	function displayOffersBySkill() {
 		console.log("running displayOffersBySkill");
+		// $(".da_tabs").removeClass("active");
+		// $(this).addClass("active");
 		$("#main_results").empty();
 		$("#main_results").append("<p>"+"loading mad skills..."+"<p>");
 
@@ -94,7 +100,7 @@ $(document).ready(function() {
 		      		}
 		      		$("#main_results").append($skills);
 		      	}
-	      		
+
 	      	}
 
 	    });
@@ -103,8 +109,10 @@ $(document).ready(function() {
 	$("#perfectmatch").on("click", displayPerfect);
 	$("#offermatch").on("click", displayOfferMatch);
 	$("#offersbyskill").on("click", displayOffersBySkill);
-	
 
+function set_tab_active(){
+	$(".da_tabs").removeClass("active");
+}
 
 
 
