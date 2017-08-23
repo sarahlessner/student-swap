@@ -63,7 +63,7 @@ $(document).ready(function() {
 //updates will load when navigating to update by clicking button but
 //also need to function on page load so on click is one of 2 ways to reach info
 //will change after testing is done and clicking this redirectsex
-$("#offersbyskill").on("click", displayUserOffers);
+$("#update_button").on("click", displayUserOffers);
 
 
 
