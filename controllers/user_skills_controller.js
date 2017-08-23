@@ -10,7 +10,7 @@ module.exports = function(app) {
     var dummyObject = {};
 
     res.render("../views/updateSkills", dummyObject);
-  })
+  });
 
 };
 
