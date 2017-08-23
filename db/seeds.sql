@@ -9,7 +9,7 @@ VALUES
   ("Put birds on things"),
   ("Pick your drunk ass up at the bar"),
   ("Write your English paper"),
-  ("Post-party cleanup"),
+  ("Cleanup after your party"),
   ("Make you a beer bong"),
   ("Let your dog out"),
   ("Bake you some brownies"),
@@ -19,7 +19,7 @@ VALUES
   ("Kill that spider"),
   ("Make you a home cooked meal"),
   ("Make you a fake id"),
-  ("Social media manager");
+  ("Be your social media manager");
 
   INSERT INTO users
     (google_id, name, email, photo)

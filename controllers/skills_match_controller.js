@@ -7,7 +7,6 @@ module.exports = function(app) {
 
   app.get("/homepage/perfectmatch/:UserId", function(req, res) {
     var data = [];
-
     // console.log(req);
     //look up the current users offers
     db.Offered.findAll({
@@ -111,7 +110,7 @@ module.exports = function(app) {
     //sending data on a short delay to ensure queries all run
     //TODO: THIS PROMISE.ALL() STUFF MAKES ME WANT TO DIE PLEASE SEND HELP
     //I know it's the better solution sorry about it
-    setTimeout(function(){ res.json(data); }, 5000);  
+    setTimeout(function(){ res.json(data); }, 2000);  
   });
 
   //function for offer match - find people offering what you want
