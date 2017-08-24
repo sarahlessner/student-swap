@@ -1,8 +1,8 @@
 $(document).ready(function(){
-  $(document).on("click", "#done_deleting, #add_skill, #go_to_update",
+  $(document).on("click", "#done_deleting, #add_button, #add_button2, #go_to_update",
   function(){
     var button = $(this).attr("id");
-    if(button === "add_skill"){
+    if(button === "add_button" || button === "add_button2" ){
       console.log("you clicked add skill");
       window.location.href = window.origin + "/signin";
     } else if(button === "done_deleting"){

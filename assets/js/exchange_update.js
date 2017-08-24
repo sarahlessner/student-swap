@@ -25,26 +25,28 @@ $(document).ready(function() {
 					continue;
 				}
 
-				$offerDiv = $('<div>');
-				$offerDiv.append('<button class="offerbtn">'+offers[i].Skill.skill_name+'</button>')
-				.append('<button class="delete-offer-btn" value="'+offerId+'">Remove Offer</button>') //will remove all wanteds automatically
-				.addClass("offer-div")
-				.css('border', '1px solid black')
-				.css('text-align', 'left')
-				.attr("value", offerId);
+				$offerDiv = $('<div>')
+											.append('<button class="delete-offer-btn" value="'+offerId+'">X</button>') //will remove all wanteds automatically
+											.append('<button class="offerbtn">'+offers[i].Skill.skill_name+'</button>')
+											.addClass("offer-div")
+				// .css('border', '1px solid black')
+											.css('text-align', 'center')
+											.attr("value", offerId);
+
 				$wantedList = $("<ul>");
-				$wantedList.addClass("wanted-list");
+				$wantedList.addClass("wanteds-menu row");
 				// $(".wanted-list").hide();
 
 
 				//loop through wanteds and pair all wanteds with offer
 				for (j = 0; j < wanteds[i].length; j++) {
 					wantedId = wanteds[i][j].id;
-					$wantedOptions = $("<li>");
-					$wantedOptions.addClass("wanted-list")
-					.text(wanteds[i][j].Skill.skill_name)
+					$wantedOptions = $("<ol>");
+					$wantedOptions.addClass("row wanted-list")
+					.append('<button class="delete-wanted-btn" value="'+wantedId+'">X</button>')
+					.append('<p class="wanted-values">' + wanteds[i][j].Skill.skill_name + '</p>')
 					.attr("value", wantedId)
-					.append('<button class="delete-wanted-btn" value="'+wantedId+'">Remove Wanted</button>') //will remove all wanteds automatically
+ //will remove all wanteds automatically
 
 					$wantedList.append($wantedOptions);
 				}
@@ -69,7 +71,7 @@ $(document).ready(function() {
 			//p.s. ^ returns all the children as an array
 			//then we select the element at the 2nd element in the array
 			//and add the toggle method to that.
-
+			// console.log($(this).parent().children()[2]);
 		$($(this).parent().children()[2]).slideToggle();
 	});
 
@@ -89,6 +91,8 @@ $(document).ready(function() {
 
 	$(document).on("click", '.delete-wanted-btn', function(){
 		event.preventDefault();
+		// alert(($(this).parent().parent()).toString());
+		// $($(this).parent().parent()).css({"display","block"});
 		$.ajax({
 	      method: "DELETE",
 	      url: "/update-skills/wanteds/" + this.value
