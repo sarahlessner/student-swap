@@ -25,6 +25,7 @@ $(document).ready(function() {
       //   // console.log("at landing page");
       //   window.location.href = window.location + "homepage";
       // }
+      notLoggedIn();
       $("#user_name").text(localStorage.name);
       $("#users_update").text("Welcome, " + localStorage.name);
       $("#display_picture").attr("src", localStorage.picture);
