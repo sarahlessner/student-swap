@@ -20,7 +20,7 @@
   margin: 10px;
 }
 
-#add_button{
+#add_button, #add_button2{
   padding:10px;
   background-color: #529cc4;
   border:none;
@@ -196,6 +196,10 @@ a{
 
 .all_users_names{
   margin-top: 10px;
+}
+
+#no_matches{
+  width:20%;
 }
 
 @media (min-width:992px){
