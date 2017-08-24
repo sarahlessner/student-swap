@@ -48,7 +48,7 @@ $(document).ready(function() {
 							'<h4>' + data[i][0].Skill.skill_name + '</h4>' +
 							'</div>' +
 							'<div class="col-md-2">' +
-							'<button class="match_buttons">Contact<a class="mailto" href="mailto:' + email + 'Mail</a></button>' +
+              '<a href="mailto:'+email+'?Subject=Wanna%20Swap?" target="_top" class="mailto"><button class="match_buttons">Contact</button></a>' +
 							'</div>';
 
 						$("#main_results").append(perfect_match_html);
@@ -86,7 +86,7 @@ $(document).ready(function() {
               '</div>' +
               '<div class="col-md-2 offer_element">' +
               // '<br><br>' +
-              '<button class="offer_buttons">Contact<a class="mailto" href="mailto:' + email + 'Mail</a></button>' +
+              '<a href="mailto:'+email+'?Subject=Wanna%20Swap?" target="_top" class="mailto"><button class="match_buttons">Contact</button></a>' +
               '</div>' +
               '</div>';
 
@@ -106,6 +106,10 @@ $(document).ready(function() {
 
     $.get("/alloffersbyskill", function(data) {
       $("#main_results").empty();
+      // NOTE: this is a dummy email for now, but we need to fetch it from
+      //the back end later
+      var email = "studentskillswap@gmail.com";
+      // console.log(data);
       // console.log("All Skills Joined w Offers", data);
       //create a button for each skill
       for (var i = 0; i < data.length; i++) {
@@ -115,6 +119,7 @@ $(document).ready(function() {
         var $skills;
 
         for (var j = 0; j < data[i].length; j++) {
+          // console.log(data[i]);
       		if (isNotCurrentUser(data[i][j].User.id, localStorage.userid)) {
             if (!addedDiv) {
               $skills = $('<div class="all_skills"></div>');
@@ -125,7 +130,7 @@ $(document).ready(function() {
             var user_html = '<div class="all_users">' +
               '<h4>' + data[i][j].User.name + '</h4>' +
               '<img class="all_users_pics" src="' + data[i][j].User.photo + '"/>' +
-              '<button class="all_users_buttons">Contact<a class="mailto" href="mailto:' + 'email' + 'Mail</a></button>' +
+              '<a href="mailto:'+email+'?Subject=Wanna%20Swap?" target="_top" class="mailto"><button class="all_users_buttons">Contact</button></a>' +
               '</div>';
 
             $skills.append(user_html);
@@ -160,4 +165,3 @@ module.exports = isNotCurrentUser;
 
 
 });
-
