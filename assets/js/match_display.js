@@ -108,7 +108,7 @@ $(document).ready(function() {
       $("#main_results").empty();
       // NOTE: this is a dummy email for now, but we need to fetch it from
       //the back end later
-      var email = "studentskillswap@gmail.com";
+      // var email = "studentskillswap@gmail.com";
       // console.log(data);
       // console.log("All Skills Joined w Offers", data);
       //create a button for each skill
@@ -119,6 +119,7 @@ $(document).ready(function() {
         var $skills;
 
         for (var j = 0; j < data[i].length; j++) {
+          var email = data[i][j].User.email;
           // console.log(data[i]);
       		if (isNotCurrentUser(data[i][j].User.id, localStorage.userid)) {
             if (!addedDiv) {
