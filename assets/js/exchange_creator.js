@@ -26,7 +26,7 @@ $(document).ready(function() {
                   };
 
                   $.post("/newexchange", newExchange).then(function(response){
-                        console.log(response);
+                        console.log("SUBMIT SKILLS RESPONSE: ", response);
                         var direction = "/" + response.direction;
                         window.location.href = window.origin + direction;
                   });
@@ -34,10 +34,7 @@ $(document).ready(function() {
                   bootbox.alert("you must select at least one thing you want in return for your offer");
             }
 
-            // console.log("ARRAY "+wanted_skills);
-
-
-           
+            // console.log("ARRAY "+wanted_skills);    
       });
 
 

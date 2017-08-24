@@ -26,20 +26,29 @@ module.exports = function(app) {
     offered_skill_id = temp;
     console.log("Offered skill ids is " + temp);
 
-    db.Offered.create({
-      SkillId: parseInt(temp),
-      UserId: parseInt(req.body.offereds.userid)
+    db.Offered.findOrCreate({
+      where: {
+        SkillId: parseInt(temp),
+        UserId: parseInt(req.body.offereds.userid)
+      },
+      defaults: {
+        SkillId: parseInt(temp),
+        UserId: parseInt(req.body.offereds.userid)
+      }
 
     }).then(function(offerskill) {
       // INSERT THE 2ND THINGY THAT CREATED THE WANTEDS
-      console.log("added offered skill", offerskill);
-      SAVED_OFFER_ID = offerskill.dataValues.id;
-      console.log("WE CAPTURED THE ID OMG " + SAVED_OFFER_ID);
+      console.log("added offered skill", offerskill[1]);
+      var created = offerskill[1];
+      
+
+      SAVED_OFFER_ID = offerskill[0].id;
+      // console.log("WE CAPTURED THE ID OMG " + SAVED_OFFER_ID);
 
 
       var temp2 = req.body.wanteds.wantedskills;
-      console.log("HEY HEY HEY " + SAVED_OFFER_ID);
-      console.log("wanted skill ids are " + temp2);
+      // console.log("HEY HEY HEY " + SAVED_OFFER_ID);
+      // console.log("wanted skill ids are " + temp2);
 
       for (i = 0; i < temp2.length; i++) {
         db.Wanted.create({
@@ -51,7 +60,12 @@ module.exports = function(app) {
           // console.log("added wanted skills");
         });
       }
+      if (!created) {
+        console.log("you're already offering that item");
+        res.send({direction: "signin"});
+      } else {
       res.send({direction: "homepage"});
+      }
     });
   });
 };
