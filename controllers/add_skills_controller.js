@@ -60,6 +60,9 @@ module.exports = function(app) {
           // console.log("added wanted skills");
         });
       }
+      // if the item was found (not created) redirect to signin else direct to homepage
+      //TODO: pass some kind of message to the front end so the user is alerted
+      //that they are trying to create a dupe offer
       if (!created) {
         console.log("you're already offering that item");
         res.send({direction: "signin"});

@@ -6,6 +6,7 @@
 $(document).ready(function() {
 //	console.log("matchDisplay loading");
 
+
 	displayPerfect();
 	//get all the users offers and receive their perfect matches back as data
 	function displayPerfect() {
@@ -23,8 +24,8 @@ $(document).ready(function() {
 			$("#main_results").empty();
 	      	console.log("PERFECT MATCH", data);
 	      	for (var i = 0; i < data.length; i++) {
-      			if (data[i][0].User.id != localStorage.userid) {
-
+      			// if (data[i][0].User.id != localStorage.userid) {
+      			if (isNotCurrentUser(data[i][0].User.id, localStorage.userid)) {
 		      		var email = data[i][0].User.email;
 							var perfect_match_html ='<div class="row perfect_matches">'+
 																			'<div class="col-md-4 user_deets">' +
@@ -48,6 +49,7 @@ $(document).ready(function() {
 	    });
 	};
 
+
 	function displayOfferMatch() {
 		// $(".da_tabs").removeClass("active");
 		// $(this).addClass("active");
@@ -60,7 +62,7 @@ $(document).ready(function() {
 	      	// console.log("OK Match", data);
 	      	for (var i = 0; i < data.length; i++) {
 	      		for (var j = 0; j < data[i].length; j++) {
-      				if (data[i][j].User.id != localStorage.userid) {
+      				if (isNotCurrentUser(data[i][j].User.id, localStorage.userid)) {
 
 		      			var email = data[i][j].User.email;
 								var offer_match_html = '<div class="row offer_matches">' +
@@ -104,7 +106,7 @@ $(document).ready(function() {
       			var $skills;
 
       			for (var j = 0; j < data[i].length; j++) {
-      				if (data[i][j].User.id != localStorage.userid) {
+      				if (isNotCurrentUser(data[i][j].User.id, localStorage.userid)) {
       					if(!addedDiv) {
 				      		$skills = $('<div class="all_skills"></div>');
 			      			$skills.append($('<h3>'+ data[i][0].Skill.skill_name +'</h3>'));
@@ -132,13 +134,19 @@ $(document).ready(function() {
 	$("#offermatch").on("click", displayOfferMatch);
 	$("#offersbyskill").on("click", displayOffersBySkill);
 
-function set_tab_active(){
-	$(".da_tabs").removeClass("active");
-}
+	function set_tab_active(){
+		$(".da_tabs").removeClass("active");
+	}
 
-
-
+//broke this function out just to try my hand at testing
+"use strict";
+	var isNotCurrentUser = function(matchid, userid) {
+		if (matchid != userid) {
+			return true;
+		}
+	};
+//for testing
+module.exports = isNotCurrentUser;
 //document.ready end
 });
 
-// module.exports = perfectMatchDisplay;
