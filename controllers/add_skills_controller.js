@@ -43,31 +43,15 @@ module.exports = function(app) {
 
       for (i = 0; i < temp2.length; i++) {
         db.Wanted.create({
-
-          // SkillId: temp[i],
-          // OfferedId: offered_skill_id,
-          // UserId: offered_skill_id
-
           OfferedId: SAVED_OFFER_ID,
           UserId: req.body.wanteds.userid,
           SkillId: temp2[i]
-
         }).then(function() {
           // res.redirect("/");
-
-          console.log("added wanted skills");
+          // console.log("added wanted skills");
         });
-
       }
-      res.send({
-        direction: "homepage"
-      });
+      res.send({direction: "homepage"});
     });
-
-
-
-
   });
-
-
-}
+};
