@@ -26,6 +26,7 @@ $(document).ready(function() {
       //   window.location.href = window.location + "homepage";
       // }
       $("#user_name").text(localStorage.name);
+      $("#users_update").text("Welcome, " + localStorage.name);
       $("#display_picture").attr("src", localStorage.picture);
     } else {
       console.log("not logged in");

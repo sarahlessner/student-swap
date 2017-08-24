@@ -5,6 +5,8 @@ $(document).ready(function() {
 	displayUserOffers();
 	//
 	function displayUserOffers(){
+		// NOTE: routing here breaks page.. where else can we put it?
+		// window.location.href = window.origin + "/update-skills";
 
 		$.get("/update-skills/" + currentUser ,function(data) {
 			$("#update_stuff").empty();
@@ -73,7 +75,7 @@ $(document).ready(function() {
 
 	$(document).on("click", '.delete-offer-btn', function(){
 		event.preventDefault();
-		deleteOffer(parseInt(this.value));   
+		deleteOffer(parseInt(this.value));
 	});
 
 	function deleteOffer(offerid) {
@@ -98,7 +100,7 @@ $(document).ready(function() {
 //updates will load when navigating to update by clicking button but
 //also need to function on page load so on click is one of 2 ways to reach info
 //will change after testing is done and clicking this redirectsex
-$("#update_button").on("click", displayUserOffers);
+$(document).on("click", "#update_button",displayUserOffers);
 
 
 
