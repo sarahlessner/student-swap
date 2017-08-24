@@ -20,6 +20,14 @@
   margin: 10px;
 }
 
+#add_button{
+  padding:10px;
+  background-color: #529cc4;
+  border:none;
+  color:white;
+  border-radius: 10px;
+}
+
 /* NOTE: User Bar */
 #user_bar{
   margin-top: 10px;
