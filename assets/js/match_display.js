@@ -99,18 +99,25 @@ $(document).ready(function() {
 	      	//create a button for each skill
 	      	for (var i = 0; i < data.length; i++) {
 	      		console.log("data", data[i]);
-	      		var $skills = $('<div class="all_skills"></div>');
 
-      			$skills.append($('<h3>'+ data[i][0].Skill.skill_name +'</h3>'));
+      			var addedDiv = false;
+      			var $skills;
+
       			for (var j = 0; j < data[i].length; j++) {
       				if (data[i][j].User.id != localStorage.userid) {
-								var user_html =	'<div class="all_users">' +
-																'<h4>'+ data[i][j].User.name +'</h4>' +
-																'<img class="all_users_pics" src="'+data[i][j].User.photo+'"/>' +
-																'<button class="all_users_buttons">Contact<a class="mailto" href="mailto:'+'email'+'Mail</a></button>'+
-																'</div>';
+      					if(!addedDiv) {
+				      		$skills = $('<div class="all_skills"></div>');
+			      			$skills.append($('<h3>'+ data[i][0].Skill.skill_name +'</h3>'));
+			      			addedDiv = true;
+      					}
 
-								$skills.append(user_html);
+						var user_html =	'<div class="all_users">' +
+														'<h4>'+ data[i][j].User.name +'</h4>' +
+														'<img class="all_users_pics" src="'+data[i][j].User.photo+'"/>' +
+														'<button class="all_users_buttons">Contact<a class="mailto" href="mailto:'+'email'+'Mail</a></button>'+
+														'</div>';
+
+						$skills.append(user_html);
 		      		}
 	      		}
 	      		$("#main_results").append($skills);
