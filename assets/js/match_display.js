@@ -68,29 +68,35 @@ $(document).ready(function() {
     $.get("/homepage/offermatch/" + userid, function(data) {
       $("#main_results").empty();
       // console.log("OK Match", data);
-      for (var i = 0; i < data.length; i++) {
-        for (var j = 0; j < data[i].length; j++) {
-      		if (isNotCurrentUser(data[i][j].User.id, localStorage.userid)) {
+      if(data.length === 0){
+        $("#main_results").append('<img id="no_matches" src="../img/sorry.png"/>')
+													.append('<h3 style="color:#4e638a">No Matches Found. Adding more skills can help!</h3>')
+													.append('<button id="add_button2">Add another skill?</button>')
+      } else{
+        for (var i = 0; i < data.length; i++) {
+          for (var j = 0; j < data[i].length; j++) {
+            if (isNotCurrentUser(data[i][j].User.id, localStorage.userid)) {
 
-            var email = data[i][j].User.email;
-            var offer_match_html = '<div class="row offer_matches">' +
-              '<div class="col-md-2 user_deets">' +
-              '<h3>' + data[i][j].User.name + '</h3>' +
-              '<img class="offer_photos" src="' + data[i][j].User.photo + '">' +
-              '</div>' +
-              '<div class="col-md-8 offer_element">' +
-              '<div class="offer_text">' +
-              '<h3> Offer: </h3> ' +
-              '<h4>' + data[i][j].Skill.skill_name + '</h4>' +
-              '</div>' +
-              '</div>' +
-              '<div class="col-md-2 offer_element">' +
-              // '<br><br>' +
-              '<a href="mailto:'+email+'?Subject=Wanna%20Swap?" target="_top" class="mailto"><button class="match_buttons">Contact</button></a>' +
-              '</div>' +
-              '</div>';
+              var email = data[i][j].User.email;
+              var offer_match_html = '<div class="row offer_matches">' +
+                '<div class="col-md-2 user_deets">' +
+                '<h3>' + data[i][j].User.name + '</h3>' +
+                '<img class="offer_photos" src="' + data[i][j].User.photo + '">' +
+                '</div>' +
+                '<div class="col-md-8 offer_element">' +
+                '<div class="offer_text">' +
+                '<h3> Offer: </h3> ' +
+                '<h4>' + data[i][j].Skill.skill_name + '</h4>' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-2 offer_element">' +
+                // '<br><br>' +
+                '<a href="mailto:'+email+'?Subject=Wanna%20Swap?" target="_top" class="mailto"><button class="match_buttons">Contact</button></a>' +
+                '</div>' +
+                '</div>';
 
-            $("#main_results").append(offer_match_html);
+              $("#main_results").append(offer_match_html);
+            }
           }
         }
       }
@@ -161,7 +167,7 @@ $(document).ready(function() {
 		}
 	};
 //for testing
-module.exports = isNotCurrentUser;
+// module.exports = isNotCurrentUser;
 //document.ready end
 
 

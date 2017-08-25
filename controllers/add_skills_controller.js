@@ -21,7 +21,7 @@ module.exports = function(app) {
 
 
   app.post("/newexchange", function(req, res) {
-
+    
     var temp = req.body.offereds.offer;
     offered_skill_id = temp;
     console.log("Offered skill ids is " + temp);
@@ -40,7 +40,7 @@ module.exports = function(app) {
       // INSERT THE 2ND THINGY THAT CREATED THE WANTEDS
       console.log("added offered skill", offerskill[1]);
       var created = offerskill[1];
-      
+
 
       SAVED_OFFER_ID = offerskill[0].id;
       // console.log("WE CAPTURED THE ID OMG " + SAVED_OFFER_ID);
@@ -65,7 +65,8 @@ module.exports = function(app) {
       //that they are trying to create a dupe offer
       if (!created) {
         console.log("you're already offering that item");
-        res.send({direction: "signin"});
+        res.send({direction: "signin",
+                  reply: "You already have this offer!"});
       } else {
       res.send({direction: "homepage"});
       }

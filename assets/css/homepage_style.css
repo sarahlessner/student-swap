@@ -12,7 +12,8 @@
 
 #logout_button{
   padding:10px;
-  background-color: #529cc4;
+  background-color: #6eb510;
+  /*background-color: #529cc4;*/
   border:none;
   color:white;
   border-radius: 10px;
@@ -49,8 +50,8 @@
 
 #update_button{
   padding:10px;
-  background-color: #529cc4;
-  /*background-color: #00da37;*/
+  background-color: #6eb510;
+  /*background-color: #529cc4;*/
   border:none;
   color:white;
   border-radius: 10px;
@@ -97,7 +98,9 @@
   border-radius: 10px;
   font-size:20px;
   border:none;
-  background-color:  #529cc4;
+  background-color: #b0e36d;
+  color:#467706;
+  /*background-color: #529cc4;*/
 }
 
 a{
@@ -119,7 +122,8 @@ a{
 
 .user_deets{
   text-align: center;
-  color:white;
+  color:#def0fa;
+  /*color:#b0e36d;*/
   margin-bottom: 10px;
 }
 
@@ -145,6 +149,7 @@ a{
 
 .offer_text{
   color:white;
+  /*color:#b0e36d;*/
   /*font-size: 15px;*/
   text-align: center;
   margin-top:2%;
@@ -152,7 +157,8 @@ a{
 .offer_buttons{
   border:none;
   color:white;
-  background-color: #529cc4;
+  background-color: #6eb510;
+  /*background-color: #529cc4;*/
   padding:10px;
   width:100%;
   border-radius: 10px;
@@ -182,7 +188,8 @@ a{
 
 .all_users_buttons{
   border: none;
-  background-color: #7abce0;
+  /*background-color: #7abce0;*/
+  background-color: #b0e36d;
   padding:10px;
   border-radius: 10px;
   display: block;
@@ -190,7 +197,8 @@ a{
   float: right;
   margin: 10px;
   /*border: 1px solid #4e638a;*/
-  color:#2b4471;
+  /*color:#2b4471;*/
+  color:#467706;
   font-weight: bold;
 }
 

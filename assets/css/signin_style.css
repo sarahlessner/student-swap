@@ -12,6 +12,7 @@
   width:50%;
   margin-bottom: 100px;
   margin-top: 20px;
+  /*border: 1px solid #b0e36d;*/
 }
 
 .skills_existing{
@@ -21,6 +22,11 @@
   color:white;
   padding:10px;
   border-radius: 10px;
+}
+
+.checked_skill{
+  background-color: #b0e36d;
+  color: #5c9a0b;
 }
 
 #skill_title{
