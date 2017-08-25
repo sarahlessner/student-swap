@@ -74,12 +74,14 @@ $(document).ready(function() {
 			// console.log($(this).parent().children()[2]);
 		$($(this).parent().children()[2]).slideToggle();
 	});
+	//on click for delete button to call delete offer function
 
 	$(document).on("click", '.delete-offer-btn', function(){
 		event.preventDefault();
 		deleteOffer(parseInt(this.value));
 	});
-
+	//function to remove an offer - called by on click
+	//also called by condition of removal of all wanteds for the offer
 	function deleteOffer(offerid) {
 	 $.ajax({
 	      method: "DELETE",
@@ -88,7 +90,7 @@ $(document).ready(function() {
 	    .done(displayUserOffers);
 	    console.log("delete offered button what are you?", offerid);
 	};
-
+	//function to remove a wanted item on click
 	$(document).on("click", '.delete-wanted-btn', function(){
 		event.preventDefault();
 		// alert(($(this).parent().parent()).toString());

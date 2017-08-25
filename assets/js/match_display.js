@@ -17,21 +17,22 @@ $(document).ready(function() {
     // $("#main_results").append("<p>" + "calculating perfect matches..." + "<p>");
 		 $("#main_results").append('<img src="https://loading.io/spinners/color-bar/lg.colorful-progress-loader.gif"/>');
     console.log("running displayPerfect");
-    //TODO: Enable ID from local storage for 'production'
     var userid = localStorage.userid;
-    // var userid = 1;
-    //TODO: figure out where UserId param ought to come
-    //from the page redirect/data
+   
     $.get("/homepage/perfectmatch/" + userid, function(data) {
       $("#main_results").empty();
       console.log("PERFECT MATCH", data);
       if (data.length === 0) {
         // console.log("sorry, no matches here");
+        //if there aren't any matches - display images
 				$("#main_results").append('<img id="no_matches" src="../img/sorry.png"/>')
 													.append('<h3 style="color:#4e638a">No Matches Found. Adding more skills can help!</h3>')
 													.append('<button id="add_button2">Add another skill?</button>')
       } else {
+        //match display logic - put match name/skills matching to the page
+        //include email for sending and photo for user
 				for (var i = 0; i < data.length; i++) {
+            //block user from seeing their own matches
       				if (isNotCurrentUser(data[i][0].User.id, localStorage.userid)) {
 
 						var email = data[i][0].User.email;
@@ -57,7 +58,8 @@ $(document).ready(function() {
 			}
     });
   };
-
+  //function to display offer matches to the user - those offering what the user wants
+  //regardless of if the user is offering something they want in return
   function displayOfferMatch() {
     // $(".da_tabs").removeClass("active");
     // $(this).addClass("active");
@@ -67,14 +69,17 @@ $(document).ready(function() {
     var userid = localStorage.userid;
     $.get("/homepage/offermatch/" + userid, function(data) {
       $("#main_results").empty();
+      //if no offer matches
       // console.log("OK Match", data);
       if(data.length === 0){
         $("#main_results").append('<img id="no_matches" src="../img/sorry.png"/>')
 													.append('<h3 style="color:#4e638a">No Matches Found. Adding more skills can help!</h3>')
 													.append('<button id="add_button2">Add another skill?</button>')
       } else{
+        //display offer matches - name, photo, skills, etc
         for (var i = 0; i < data.length; i++) {
           for (var j = 0; j < data[i].length; j++) {
+            //block user from seeing their own matches
             if (isNotCurrentUser(data[i][j].User.id, localStorage.userid)) {
 
               var email = data[i][j].User.email;
@@ -94,7 +99,7 @@ $(document).ready(function() {
                 '<a href="mailto:'+email+'?Subject=Wanna%20Swap?" target="_top" class="mailto"><button class="match_buttons">Contact</button></a>' +
                 '</div>' +
                 '</div>';
-
+                //append matches to page
               $("#main_results").append(offer_match_html);
             }
           }
@@ -112,37 +117,38 @@ $(document).ready(function() {
 
     $.get("/alloffersbyskill", function(data) {
       $("#main_results").empty();
-      // NOTE: this is a dummy email for now, but we need to fetch it from
-      //the back end later
-      // var email = "studentskillswap@gmail.com";
-      // console.log(data);
+      
       // console.log("All Skills Joined w Offers", data);
       //create a button for each skill
       for (var i = 0; i < data.length; i++) {
         console.log("data", data[i]);
-
+        //set added div to false for each offer
         var addedDiv = false;
         var $skills;
 
         for (var j = 0; j < data[i].length; j++) {
+          //get each users email
           var email = data[i][j].User.email;
           // console.log(data[i]);
+          //make sure use doesn't see their own matches
       		if (isNotCurrentUser(data[i][j].User.id, localStorage.userid)) {
+            //check if no div was already added for the skill
             if (!addedDiv) {
               $skills = $('<div class="all_skills"></div>');
               $skills.append($('<h3>' + data[i][0].Skill.skill_name + '</h3>'));
               addedDiv = true;
             }
-
+            //display users offering that skill
             var user_html = '<div class="all_users">' +
               '<h4>' + data[i][j].User.name + '</h4>' +
               '<img class="all_users_pics" src="' + data[i][j].User.photo + '"/>' +
               '<a href="mailto:'+email+'?Subject=Wanna%20Swap?" target="_top" class="mailto"><button class="all_users_buttons">Contact</button></a>' +
               '</div>';
-
+              //append each user offering the skill to div for that skill
             $skills.append(user_html);
           }
         }
+        //append skills div to page
         $("#main_results").append($skills);
 
 
@@ -150,7 +156,7 @@ $(document).ready(function() {
 
     });
   };
-
+  //on clicks that also trigger each function
   $("#perfectmatch").on("click", displayPerfect);
   $("#offermatch").on("click", displayOfferMatch);
   $("#offersbyskill").on("click", displayOffersBySkill);
@@ -160,15 +166,12 @@ $(document).ready(function() {
   }
 
 //broke this function out just to try my hand at testing
-"use strict";
+//but then learned it's not test-able
 	var isNotCurrentUser = function(matchid, userid) {
 		if (matchid != userid) {
 			return true;
 		}
 	};
-//for testing
-// module.exports = isNotCurrentUser;
-//document.ready end
 
 
 });

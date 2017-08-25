@@ -5,7 +5,7 @@ const db = require(path.join(__dirname,".." ,"models"));
 
 module.exports = function(app) {
   //all app.gets, post, etc need to live here
-
+  //get all the users current offers and then the things they want for those offers
 	app.get("/update-skills/:currentUser", function(req, res) {
 	  db.Offered
 	    .findAll({
@@ -14,7 +14,7 @@ module.exports = function(app) {
 	      },
 	      include: [{ model: db.Skill }]
 	    })
-	    .then(function(useroffers) {
+	    .then(function(useroffers) { // returns all the users offers
 	      // console.log("USER OFFERS FROM UPDATE", useroffers);
 	      // console.log("SKILLZ", useroffers[0].Skill.skill_name);
 	      Promise.all(
@@ -27,15 +27,15 @@ module.exports = function(app) {
 	            },
 	            include: [{ model: db.Skill }]
 	          })
-	        )).then(wanted => {
+	        )).then(wanted => { // returns all the things they want per each offer
 	        // TODO Math `useroffers` with `values` (combining 2 arrays)
-	        res.json({useroffers: useroffers, wanted:wanted});
+	        res.json({useroffers: useroffers, wanted:wanted}); // send over 2 arrays of objects
 	        // console.log(JSON.stringify({useroffers: useroffers, values:values}))
 	      });
 	    });
 	//end of app.get
 	});
-
+	//delete offer route
 	app.delete("/update-skills/offers/:offerId", function(req, res) {
 		db.Offered.destroy({
 			where: {id: req.params.offerId}
@@ -43,7 +43,7 @@ module.exports = function(app) {
 			res.json(deleteoffer);
 		});
 	});
-
+	//delete wanted route
 	app.delete("/update-skills/wanteds/:wantedId", function(req, res) {
 		db.Wanted.destroy({
 			where: {id: req.params.wantedId}

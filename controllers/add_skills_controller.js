@@ -6,7 +6,7 @@ var SAVED_OFFER_ID;
 var wanted_skill_ids;
 
 module.exports = function(app) {
-
+//route to add skills page and get all of the skills from skills table
   app.get("/signin", function(req, res) {
 
     db.Skill.findAll({}).then(function(data) {
@@ -19,12 +19,12 @@ module.exports = function(app) {
     });
   });
 
-
+  //post a swap - creates an offer first
   app.post("/newexchange", function(req, res) {
     
     var temp = req.body.offereds.offer;
     offered_skill_id = temp;
-    console.log("Offered skill ids is " + temp);
+    // console.log("Offered skill ids is " + temp);
 
     db.Offered.findOrCreate({
       where: {
@@ -35,10 +35,10 @@ module.exports = function(app) {
         SkillId: parseInt(temp),
         UserId: parseInt(req.body.offereds.userid)
       }
-
+      //once the offer is created
     }).then(function(offerskill) {
-      // INSERT THE 2ND THINGY THAT CREATED THE WANTEDS
-      console.log("added offered skill", offerskill[1]);
+      // use the offer id to populate wanted table along with skill and user 
+      // console.log("added offered skill", offerskill[1]);
       var created = offerskill[1];
 
 
@@ -64,7 +64,7 @@ module.exports = function(app) {
       //TODO: pass some kind of message to the front end so the user is alerted
       //that they are trying to create a dupe offer
       if (!created) {
-        console.log("you're already offering that item");
+        // console.log("you're already offering that item");
         res.send({direction: "signin",
                   reply: "You already have this offer!"});
       } else {
