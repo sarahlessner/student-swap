@@ -23,7 +23,7 @@
 
 #add_button, #add_button2{
   padding:10px;
-  background-color: #529cc4;
+  background-color: #6eb510;
   border:none;
   color:white;
   border-radius: 10px;
@@ -64,6 +64,7 @@
   scroll through content */
   height:220px;
   background-color: #f9f9f9;
+  overflow-y: scroll;
 }
 
 /* NOTE: results section */
@@ -209,6 +210,40 @@ a{
 #no_matches{
   width:20%;
 }
+
+/*CSS for future developements code*/
+.swap_logs{
+  border-radius: 10px;
+  padding:10px;
+  margin:10px;
+  background-color: #529cc4;
+  color:white;
+}
+
+#sent_swaps{
+  color:grey;
+}
+
+.swap_buttons{
+  border: none;
+  /*background-color: #7abce0;*/
+  background-color: #4e638a;
+  padding:10px;
+  border-radius: 10px;
+  margin:5px;
+}
+
+.swap_image{
+  border-radius: 100%;
+  width:75px;
+  /*height:75px;*/
+}
+
+.swap_log_matchcontent{
+  position:relative;
+  top:-20px;
+}
+
 
 @media (min-width:992px){
   .match_buttons{
