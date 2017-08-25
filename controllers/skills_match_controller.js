@@ -5,6 +5,8 @@ const db = require(path.join(__dirname,".." ,"models"));
 
 module.exports = function(app) {
 
+//COMMENTED OUT WORKING ON GETTING PROMISE ALL SET UP INSTEAD OF TIMER
+//CURRENT WORKING VERSION OF PERFECT MATCH LOGIC / OTHER MATCHES BELOW
   // app.get("/homepage/perfectmatch/:UserId", function(req, res) {
     // var data = [];
     // console.log(req);
@@ -154,14 +156,12 @@ module.exports = function(app) {
     // });
 
     //sending data on a short delay to ensure queries all run
-    //TODO: THIS PROMISE.ALL() STUFF MAKES ME WANT TO DIE PLEASE SEND HELP
-    //I know it's the better solution sorry about it
   //   setTimeout(function(){ res.json(data); }, 2000);  
   // });
 
 
 
-  // OLD FUNCTION - WORKS PERFECTLY BUT HAS A TIMER
+  // OLD PERFECT MATCH GET - WORKS PERFECTLY BUT HAS A TIMER
   app.get("/homepage/perfectmatch/:UserId", function(req, res) {
     var data = [];
     // console.log(req);
@@ -264,8 +264,6 @@ module.exports = function(app) {
       } 
     });
     //sending data on a short delay to ensure queries all run
-    //TODO: THIS PROMISE.ALL() STUFF MAKES ME WANT TO DIE PLEASE SEND HELP
-    //I know it's the better solution sorry about it
     setTimeout(function(){ res.json(data); }, 2000);  
   });
 
