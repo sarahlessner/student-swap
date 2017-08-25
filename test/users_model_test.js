@@ -1,32 +1,45 @@
 
 var expect = require("chai").expect;
-var Skill  = require("../models/users.js");
+var User  = require("../models/users.js");
 
-// console.log(Skill().skill_name);
+//object like my users/skills model object
 var testUser = {
-	name: "skill",
-	email: "email@email.com",
-	photo: "www.mypicture.com"
+	name: "name",
+	email: "email@email.com"
 }
 
-describe("skill", function() {
+describe("user", function() {
   
-  it("should have a skill name", function(){
-  	expect(testSkill.skill_name).to.equal("skill");
-
+  it("should have a name", function(){
+  	expect(testUser.name).to.equal("name");
   });
 
-  it("should be a string", function(){
-  	expect(typeof testSkill.skill_name).to.equal("string");
+  it("should have the name as a string", function(){
+  	expect(typeof testUser.name).to.equal("string");
   });
 
-  it("should not be null", function(){
-  	expect(testSkill.skill_name).to.not.equal(null);
+  it("should not permit null in the name field", function(){
+  	expect(testUser.name).to.not.equal(null);
   });
 
-  it("to be a type of function", function() {
-  	
-  	expect(typeof Skill).to.equal("function");
+  // it("should check for valid email format", function(){
+  // 	expect(testUser.email).to.equal();
+  // });
+
+  it("should have an email", function(){
+  	expect(testUser.email).to.equal("email@email.com");
+  });
+
+  it("should have the email as a string", function(){
+  	expect(typeof testUser.email).to.equal("string");
+  });
+
+  it("should not permit null in the email field", function(){
+  	expect(testUser.email).to.not.equal(null);
+  });
+
+  it("the model, should be a type of function", function() {
+  	expect(typeof User).to.equal("function");
   });
 
 });

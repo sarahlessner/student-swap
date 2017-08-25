@@ -2,7 +2,7 @@
 var expect = require("chai").expect;
 var Skill  = require("../models/skills.js");
 
-// console.log(Skill().skill_name);
+//object like my users/skills model object
 var testSkill = {
 	skill_name: "skill"
 }
