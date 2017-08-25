@@ -14,7 +14,7 @@ To help college kids __get stuff done!__
 ### 2. The UI
 After that, we spent time figuring out how the app would look. From sketches, to Photoshop layouts, we made sure we had a visual flow of our users journey.
 
-![picture](https://raw.githubusercontent.com/ashishdommety/student-swap/master/assets/img/HomePage.jpg)
+![picture](/assets/img/HomePage.jpg)
 
 
 
