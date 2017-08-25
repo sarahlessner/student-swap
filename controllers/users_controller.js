@@ -21,7 +21,7 @@ module.exports = function(app) {
           photo: new_user.picture
         }).then(result => {
           console.log("successfully wrote new user to database");
-          // redirect stuff still not working
+          // returns object with route and data
           console.log(result);
           res.send({redirect: "signin",
                   user_data : result.dataValues});
