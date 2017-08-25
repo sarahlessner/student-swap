@@ -28,13 +28,23 @@ $(document).ready(function() {
                   $.post("/newexchange", newExchange).then(function(response){
                         console.log("SUBMIT SKILLS RESPONSE: ", response);
                         var direction = "/" + response.direction;
+
+
+                        if(direction === "/signin"){
+                          console.log(response.reply);
+                          bootbox.alert(response.reply);
+                          
+                        }
+
                         window.location.href = window.origin + direction;
+                        // console.log(response.reply);
+                        // bootbox.alert(response.reply);
                   });
             } else {
                   bootbox.alert("you must select at least one thing you want in return for your offer");
             }
 
-            // console.log("ARRAY "+wanted_skills);    
+            // console.log("ARRAY "+wanted_skills);
       });
 
 

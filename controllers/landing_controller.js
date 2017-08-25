@@ -7,15 +7,12 @@ const db = require("../models");
 // const router = express.Router();
 
 module.exports = function(app) {
-
 app.get("/", function(req, res) {
   var hbsObject = {};
   res.render("../views/index", hbsObject);
 });
 
 app.get("/signin", function(req, res) {
-
-
   db.Skill.findAll({}).then(function(data) {
 
     var allskills = {
@@ -29,20 +26,7 @@ app.get("/signin", function(req, res) {
 });
 
 app.get("/homepage", function(req, res) {
-  //displayMatch(1);
 
-  // db.User.findOne({
-  //   where: {
-  //     id: 1
-  //   }
-  // }).then(function(dbUser) {
-  //   console.log(dbUser);
-  /*
-      var hbsObject = {
-        name: db.User.name,
-        userimg: "/img/dp-placeholder.gif"
-      };
-  */
   var hbsObject = {
     results: "dbUser"
   }

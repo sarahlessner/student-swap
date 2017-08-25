@@ -105,27 +105,5 @@ $(document).ready(function() {
 //also need to function on page load so on click is one of 2 ways to reach info
 //will change after testing is done and clicking this redirectsex
 $(document).on("click", "#update_button",displayUserOffers);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //end of document.ready
 });

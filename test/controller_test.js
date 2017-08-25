@@ -11,7 +11,7 @@ var controllers = require('../controllers/landing_controller.js');
 
 
 //viewing the code in the controller file
-console.log(controllers.toString());
+console.log(controllers);
 
 // NOTE: comment out line 3 to 14 and then run "mocha controller_test.js"
 // to run tests for the code below:
