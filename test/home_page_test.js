@@ -1,19 +1,17 @@
 var Nightmare = require("nightmare");
-
 var nightmare = Nightmare({ show: true });
 
+require('nightmare-wait-for-url')
+
 nightmare
-  .goto("https://student-skill-swap.herokuapp.com/")
+  .goto("https://student-skill-swap.herokuapp.com/homepage")
   // .click("form[action*='/search'] [name=btnK]")
-  .wait("#iron_box")
-  .click("#iron_box")
+  .wait("#add_button")
+  .click("#add_button")
   .wait(3000)
-  .click("#broom")
-  .wait(3000)
+  .url()
   .evaluate(function() {
-    //search through page to get actual details.
-    // you can also use .innerText to get the innerHTML
-    return ("you clicked the iron box svg!");
+    return ("clicked button on homepage!");
   })
   .end()
   .then(function(result) {
