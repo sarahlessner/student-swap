@@ -14,7 +14,11 @@ To help college kids __get stuff done!__
 ### 2. The UI
 After that, we spent time figuring out how the app would look. From sketches, to Photoshop layouts, we made sure we had a visual flow of our users journey.
 
-![picture](/assets/img/HomePage.jpg)
+![picture](/assets/img/HomePage.jpg?raw=true)
+One of our UI Designs. ^
+
+### 3. The Development Phase
+ Once we had our vision, we got down to coding! This phase was where spent most of our time, figuring out the nit-bits of adding user authentication, creating an efficent matching logic, and making sure our routing led our user to the right places. 
 
 
 
