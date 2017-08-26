@@ -33,7 +33,8 @@ $(document).ready(function() {
         //include email for sending and photo for user
 				for (var i = 0; i < data.length; i++) {
             //block user from seeing their own matches
-      				if (isNotCurrentUser(data[i][0].User.id, localStorage.userid)) {
+      				if (data[i][0].User.id != localStorage.userid) {
+
 
 						var email = data[i][0].User.email;
 						var perfect_match_html = '<div class="row perfect_matches">' +
@@ -80,7 +81,7 @@ $(document).ready(function() {
         for (var i = 0; i < data.length; i++) {
           for (var j = 0; j < data[i].length; j++) {
             //block user from seeing their own matches
-            if (isNotCurrentUser(data[i][j].User.id, localStorage.userid)) {
+            if (data[i][j].User.id != userid) {
 
               var email = data[i][j].User.email;
               var offer_match_html = '<div class="row offer_matches">' +
@@ -131,7 +132,7 @@ $(document).ready(function() {
           var email = data[i][j].User.email;
           // console.log(data[i]);
           //make sure use doesn't see their own matches
-      		if (isNotCurrentUser(data[i][j].User.id, localStorage.userid)) {
+      		if (data[i][j].User.id != localStorage.userid) {
             //check if no div was already added for the skill
             if (!addedDiv) {
               $skills = $('<div class="all_skills"></div>');
@@ -165,13 +166,7 @@ $(document).ready(function() {
     $(".da_tabs").removeClass("active");
   }
 
-//broke this function out just to try my hand at testing
-//but then learned it's not test-able
-	var isNotCurrentUser = function(matchid, userid) {
-		if (matchid != userid) {
-			return true;
-		}
-	};
+
 
 
 });

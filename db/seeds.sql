@@ -3,30 +3,30 @@ USE skillswap_db;
 INSERT INTO skills
   (skill_name)
 VALUES
-  ("Do your math homework"),
-  ("Color code your closet"),
+  ("Math homework"),
+  ("Color coded closet"),
   ("Make stuff out of pallets"),
   ("Put birds on things"),
-  ("Pick your drunk ass up at the bar"),
-  ("Write your English paper"),
-  ("Cleanup after your party"),
-  ("Make you a beer bong"),
-  ("Let your dog out"),
-  ("Bake you some brownies"),
-  ("Give you a makeover"),
-  ("Tutor you in web development"),
-  ("Listen to you talk about your ex"),
+  ("Pick a drunk ass up at the bar"),
+  ("Write an English paper"),
+  ("Post-Party cleanup"),
+  ("Make a beer bong"),
+  ("Let out the dog"),
+  ("Bake some brownies"),
+  ("Personal makeover"),
+  ("Web development tutor"),
+  ("Dissect a past relationship"),
   ("Kill that spider"),
-  ("Make you a home cooked meal"),
-  ("Make you a fake id"),
-  ("Be your social media manager");
+  ("Make a home cooked meal"),
+  ("Make a fake id"),
+  ("Social media manager");
 
   INSERT INTO users
     (google_id, name, email, photo)
   VALUES
-    ("012344", "Sarah", "sarah@sarah.com", "sarahsphoto.com"),
-    ("012345", "Ashish", "ashish@ashish.com", "ashishsphoto.com"),
-    ("012346", "Tali", "tali@tali.com", "talisphoto.com");
+    ("012344", "Sarah", "sarahweik@sarahweik.com", "https://student-skill-swap.herokuapp.com/img/sarah.jpg"),
+    ("012345", "Ashish", "ashish@ashish.com", "https://student-skill-swap.herokuapp.com/img/Ashish.jpg"),
+    ("012346", "Tali", "tali@tali.com", "https://student-skill-swap.herokuapp.com/img/tali.png");
 
   INSERT INTO Offereds
       (skillId, UserId)
@@ -36,7 +36,7 @@ VALUES
           FROM Users user
           WHERE user.name = 'Tali')
     FROM Skills skill
-    WHERE skill.skill_name = 'Color code your closet';
+    WHERE skill.skill_name = 'Color coded closet';
 
   INSERT INTO Wanteds
         (skillId, OfferedId, UserId)
@@ -49,7 +49,7 @@ VALUES
         FROM Users user
         WHERE user.name = 'Tali')
     FROM Skills skill
-    WHERE skill.skill_name = 'Make you a fake id';
+    WHERE skill.skill_name = 'Make a fake id';
 
 
     INSERT INTO Wanteds
@@ -76,7 +76,7 @@ VALUES
         FROM Users user
         WHERE user.name = 'Sarah')
     FROM Skills skill
-    WHERE skill.skill_name = 'Tutor you in web development';
+    WHERE skill.skill_name = 'Web development tutor';
 
 INSERT INTO Offereds
       (skillId, UserId)
@@ -96,7 +96,7 @@ INSERT INTO Offereds
           FROM Users user
           WHERE user.name = 'Ashish')
     FROM Skills skill
-    WHERE skill.skill_name = 'Tutor you in web development';
+    WHERE skill.skill_name = 'Web development tutor';
 
   INSERT INTO Wanteds
         (skillId, OfferedId, UserId)
@@ -109,7 +109,7 @@ INSERT INTO Offereds
         FROM Users user
         WHERE user.name = 'Ashish')
     FROM Skills skill
-    WHERE skill.skill_name = 'Make you a fake id';
+    WHERE skill.skill_name = 'Make a fake id';
 
     INSERT INTO Wanteds
         (skillId, OfferedId, UserId)
@@ -122,7 +122,7 @@ INSERT INTO Offereds
         FROM Users user
         WHERE user.name = 'Ashish')
     FROM Skills skill
-    WHERE skill.skill_name = 'Do your math homework';
+    WHERE skill.skill_name = 'Math homework';
 
     INSERT INTO Offereds
       (skillId, UserId)
@@ -145,4 +145,4 @@ INSERT INTO Offereds
         FROM Users user
         WHERE user.name = 'Tali')
     FROM Skills skill
-    WHERE skill.skill_name = 'Social Media Manager';
+    WHERE skill.skill_name = 'Social media manager';
